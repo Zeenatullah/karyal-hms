@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="col-lg-7 offset-lg-1">
-                    {!! Form::open(['action' => 'foodmenuController@store', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
+                    {!! Form::open(['action' => 'FoodmenuController@store', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
                         <br>
                         <div class="row">
                             <div class="dropdown col-lg-12 input-group">

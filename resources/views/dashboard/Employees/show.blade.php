@@ -100,7 +100,7 @@
 									</td>
 									<td>
 										<a href="/dboard/employees"  class="btn btn-primary col-lg-5">@lang('text.Go back')</a>
-										{!! Form::open(['action' => ['employeeController@destroy', $employees->id], 'method' => 'POST'])!!}
+										{!! Form::open(['action' => ['EmployeeController@destroy', $employees->id], 'method' => 'POST'])!!}
 											{{Form::hidden('_method', 'DELETE')}}
 											{{Form::submit(__('text.Delete'), ['class' => 'btn btn-danger col-lg-5 col-lg-offset-1'])}}
 										{!! Form::close() !!}

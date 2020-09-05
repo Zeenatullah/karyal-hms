@@ -89,7 +89,7 @@
 								<td>
 									<a href="/dboard/foods" class="btn btn-primary col-lg-5">@lang('text.Go back')</a>
 									<div>
-										{!! Form::open(['action' => ['foodmenuController@destroy', $foodMenu->id], 'method' => 'POST'])!!}
+										{!! Form::open(['action' => ['FoodmenuController@destroy', $foodMenu->id], 'method' => 'POST'])!!}
 										{{Form::hidden('_method', 'DELETE')}}
 										{{Form::submit(__('text.Delete'), ['class' => 'btn btn-danger col-lg-5 col-lg-offset-1'])}}
 										{!! Form::close() !!}

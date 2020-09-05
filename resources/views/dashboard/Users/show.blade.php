@@ -76,7 +76,7 @@
 			<div class="col-lg-offset-3">
 				<a href="/dboard/users" class="btn btn-primary col-lg-2 col-lg-offset-2">@lang('text.Go back')</a>
 				<div class="col-lg-2 col-lg-offset-3">
-					{!! Form::open(['action' => ['receptionistController@destroy', $post->id], 'method' => 'POST'])!!}
+					{!! Form::open(['action' => ['ReceptionistController@destroy', $post->id], 'method' => 'POST'])!!}
 					{{Form::hidden('_method', 'DELETE')}}
 					{{Form::submit(__('text.Delete'), ['class' => 'btn btn-danger col-lg-12'])}}
 					{!! Form::close() !!}

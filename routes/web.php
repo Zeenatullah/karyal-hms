@@ -62,9 +62,9 @@ Route::middleware(['check.redirect', 'can:access-admin-area'])->group(function (
     route::get('/dboard/feedback', 'DashboardController@feedbacks');
 
     Route::resource('room', 'RoomsController');
-    Route::resource('employee', 'employeeController');
-    Route::resource('foodMenu', 'foodmenuController');
-    Route::resource('receptionist', 'receptionistController');
+    Route::resource('employee', 'EmployeeController');
+    Route::resource('foodMenu', 'FoodmenuController');
+    Route::resource('receptionist', 'ReceptionistController');
     Route::get('/home', 'AdminController@index');
     
     Route::get('/dboard/daily', 'ReportsController@daily');

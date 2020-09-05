@@ -17,7 +17,7 @@
             <a href="/receptionist/{{$post->id}}/edit" class="btn btn-success col-md-6">Edit</a>
         </div>
         <div class="col-md-6">
-            {!! Form::open(['action' => ['receptionistController@destroy', $post->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+            {!! Form::open(['action' => ['ReceptionistController@destroy', $post->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
             {{Form::hidden('_method', 'DELETE')}}
             {{Form::submit('Delete', ['class' => 'btn btn-danger col-md-3'])}}
             {!! Form::close() !!}

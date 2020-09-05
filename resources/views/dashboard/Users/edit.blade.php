@@ -8,8 +8,8 @@
                         <div class="card-header">{{ __('Register') }}</div>
 
                         <div class="card-body">
-                            {!! Form::open(['action' => ['receptionistController@update', $post->id], 'method' => 'POST', 'enctype' =>'multipart/form-data']) !!}
-                            {{-- <form method="POST" action="receptionistController@update" > --}}
+                            {!! Form::open(['action' => ['ReceptionistController@update', $post->id], 'method' => 'POST', 'enctype' =>'multipart/form-data']) !!}
+                            {{-- <form method="POST" action="ReceptionistController@update" > --}}
                                 @csrf
         {{-- Name --}}
                                 <div class="form-group row">

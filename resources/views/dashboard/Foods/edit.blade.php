@@ -73,7 +73,7 @@
                             <div class="row">
                                 <div class="col-lg-2"><h4></h4></div>
                                 <div class="col-lg-7 offset-lg-1">
-                                    {!! Form::open(['action' => ['foodmenuController@update', $foods->id], 'method' => 'POST', 'enctype' =>'multipart/form-data']) !!}
+                                    {!! Form::open(['action' => ['FoodmenuController@update', $foods->id], 'method' => 'POST', 'enctype' =>'multipart/form-data']) !!}
                                         <div class="row">
                                             <label>
                                                 @if ($foods->food_drink === "Drinkings")

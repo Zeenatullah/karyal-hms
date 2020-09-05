@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\foodMenu;
 
 
-class foodmenuController extends Controller
+class FoodmenuController extends Controller
 {
     /**
      * Display a listing of the resource.

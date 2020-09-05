@@ -74,7 +74,7 @@
                                 </div>
                                 <div class="col-lg-2"></div>
                                 <div class="col-lg-7 offset-lg-1">
-                                    {!! Form::open(['action' => ['employeeController@update', $employees->id], 'method' => 'POST', 'enctype' =>'multipart/form-data']) !!}
+                                    {!! Form::open(['action' => ['EmployeeController@update', $employees->id], 'method' => 'POST', 'enctype' =>'multipart/form-data']) !!}
                                         <br>
                                         <div class="row">
                                             <div class="form-group col-lg-4">

@@ -61,7 +61,7 @@
                 <a href="/employee/{{$employees->id}}/edit" class="btn btn-info col-lg-6">Edit</a>
             </div>
             <div class="col-md-4">
-                {!! Form::open(['action' => ['employeeController@destroy', $employees->id], 'method' => 'POST'])!!}
+                {!! Form::open(['action' => ['EmployeeController@destroy', $employees->id], 'method' => 'POST'])!!}
                     {{Form::hidden('_method', 'DELETE')}}
                     {{Form::submit('Delete', ['class' => 'btn btn-danger col-lg-4'])}}
                 {!! Form::close() !!}

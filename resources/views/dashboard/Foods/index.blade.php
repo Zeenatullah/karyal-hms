@@ -65,7 +65,7 @@
 			<div class="col-lg-2"></div>
 			<div class="col-lg-7">
 				<h3>@lang('text.HeadText')</h3>
-				{!! Form::open(['action' => 'foodmenuController@store', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
+				{!! Form::open(['action' => 'FoodmenuController@store', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
 					<br>
 					<div class="row">
 						<div class="dropdown col-lg-12 input-group">
