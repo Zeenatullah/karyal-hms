@@ -46,24 +46,24 @@ class DashboardController extends Controller
     {
         $users = User::orderBy('created_at', 'desc')->paginate(10);
         // dd($users);
-        return view('dashboard/Users.index')->with('users', $users);
+        return view('dashboard.users.index')->with('users', $users);
     }
     public function employees()
     {
         $employees = Employee::orderBy('created_at', 'desc')->paginate(10);
-        return view('dashboard.Employees.index')->with('employees', $employees);;
+        return view('dashboard.employees.index')->with('employees', $employees);;
     }
     
     public function rooms()
     {
         $rooms = Room::paginate(10);
-        return view('dashboard.Rooms.index')->with('rooms', $rooms);
+        return view('dashboard.rooms.index')->with('rooms', $rooms);
     }
     public function foods()
     {
         
         $foods = FoodMenu::paginate(10);
-        return view('dashboard.Foods.index')->with('foods', $foods);
+        return view('dashboard.foods.index')->with('foods', $foods);
     }
     public function feedbacks()
     {

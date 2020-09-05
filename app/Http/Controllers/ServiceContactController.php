@@ -13,7 +13,7 @@ class ServiceContactController extends Controller
      */
     public function index()
     {
-        return view('Assistant.index');
+        return view('assistant.index');
     }
 
     /**

@@ -68,7 +68,7 @@ class ReceptionistController extends Controller
     public function edit($id)
     {
         $post = User::find($id); 
-        return view('Admin.users.edit')->with('post', $post);
+        return view('admin.users.edit')->with('post', $post);
     }
 
     /**

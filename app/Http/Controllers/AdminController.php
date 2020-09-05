@@ -34,12 +34,12 @@ class AdminController extends Controller
      */
     public function create()
     {
-        // return view('Admin.rooms');
+        // return view('admin.rooms');
     }
 
     // public function rooms()
     // {
-        // return view('Admin.rooms');
+        // return view('admin.rooms');
     // }
 
     /**

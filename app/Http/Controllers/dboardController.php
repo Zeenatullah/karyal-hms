@@ -13,8 +13,7 @@ class DboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard/Users.index');
-        
+        return view('dashboard.users.index');
     }
 
     /**

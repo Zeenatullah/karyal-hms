@@ -62,7 +62,7 @@ class WebsiteController extends Controller
 
     public function services(){
         $services = Room::all();
-        return view('website.Services')->with('services', $services);
+        return view('website.services')->with('services', $services);
     }
     public function contact(){
         return view('website.contacts');

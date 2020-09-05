@@ -34,7 +34,7 @@ class RoomBookingController extends Controller
         $rooms = Room::all();
         $roomBooking = RoomBooking::paginate(5);
         // return;
-        return view('Assistant.roombooking.index')->with('customers', $customers)->with('rooms', $rooms)->with('roomBooking', $roomBooking);
+        return view('assistant.roombooking.index')->with('customers', $customers)->with('rooms', $rooms)->with('roomBooking', $roomBooking);
 
     }
 
@@ -101,7 +101,7 @@ class RoomBookingController extends Controller
     {
         // return "success";
         $roomBooking = RoomBooking::find($id); 
-        return view('Assistant.roomBooking.edit')->with('roomBooking', $roomBooking);
+        return view('assistant.roomBooking.edit')->with('roomBooking', $roomBooking);
     }
 
     /**

@@ -17,9 +17,9 @@ class FoodmenuController extends Controller
     {
         
         $foodMenu = FoodMenu::all();
-        return view('Admin.food.foodMenu')->with('foodMenu', $foodMenu);
+        return view('admin.food.foodMenu')->with('foodMenu', $foodMenu);
         // return view('receptionest.foodmenu');
-        // return view('Admin.food.foodmenu');
+        // return view('admin.food.foodmenu');
 
     }
 

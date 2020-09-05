@@ -22,7 +22,7 @@ class FoodController extends Controller
         $bookedRooms = RoomBooking::all()->sortBy('roomId');
         $bookedFoods = Food::all()->sortBy('bookedRoomId');
 
-        return view('Assistant.Food.index')->with('foods', $foods)->with('bookedRooms', $bookedRooms)->with('bookedFoods', $bookedFoods);
+        return view('assistant.food.index')->with('foods', $foods)->with('bookedRooms', $bookedRooms)->with('bookedFoods', $bookedFoods);
     }
 
     /**
@@ -93,7 +93,7 @@ class FoodController extends Controller
         $orderedFood = Food::find($id);
         $foods = FoodMenu::all();
         $bookedRooms = RoomBooking::all()->sortBy('roomId');
-        return view('Assistant.Food.edit')->with('orderedFood', $orderedFood)->with('foods', $foods)->with('bookedRooms', $bookedRooms);
+        return view('assistant.food.edit')->with('orderedFood', $orderedFood)->with('foods', $foods)->with('bookedRooms', $bookedRooms);
     }
 
     /**

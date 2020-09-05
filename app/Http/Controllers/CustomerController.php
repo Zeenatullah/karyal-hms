@@ -16,7 +16,7 @@ class CustomerController extends Controller
     public function index()
     {
         $customers = Customer::orderBy('created_at', 'desc')->paginate(5);
-        return view('Assistant.customer.customer')->with('customers', $customers);
+        return view('assistant.customer.customer')->with('customers', $customers);
     }
 
     /**
@@ -80,7 +80,7 @@ class CustomerController extends Controller
     public function show($id)
     {
         $customer = Customer::find($id); 
-        return view('Assistant.customer.show')->with('customer', $customer);
+        return view('assistant.customer.show')->with('customer', $customer);
     }
 
     /**
@@ -92,7 +92,7 @@ class CustomerController extends Controller
     public function edit($id)
     {
         $customer = Customer::find($id); 
-        return view('Assistant.customer.edit')->with('customer', $customer);
+        return view('assistant.customer.edit')->with('customer', $customer);
     }
 
     /**
