@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'bahij-bold';
+    src: url('../../font/Bahij\ Nazanin-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'bahij-regular';
+    src: url('../../font/Bahij\ Nazanin-Regular.ttf');
+}
+@font-face {
+    font-family: 'badr-bold';
+    src: url('../../font/Bahij\ Badr-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'badr-light';
+    src: url('../../font/Bahij\ Badr-Light.ttf');
+}
+
+body.dir-rtl .users-frm {
+    direction: rtl;
+    font-family: 'bahij-regular';
+}
+
+body.dir-rtl th {
+    text-align: right;
+}
+body.dir-rtl .text-align {
+    text-align: right;
+}
+.hidden_ps {
+    display: none;
+}
