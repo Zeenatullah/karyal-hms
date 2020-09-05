@@ -51,7 +51,7 @@ class DashboardController extends Controller
     public function employees()
     {
         $employees = Employee::orderBy('created_at', 'desc')->paginate(10);
-        return view('dashboard.employees.index')->with('employees', $employees);;
+        return view('dashboard.employees.index')->with('employees', $employees);
     }
     
     public function rooms()
