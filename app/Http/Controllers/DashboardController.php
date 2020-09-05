@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Employee;
 use App\User;
 use App\Room;
-use App\foodMenu;
+use App\FoodMenu;
 use App\Contact;
 use App\RoomBooking;
 use App\Food;
