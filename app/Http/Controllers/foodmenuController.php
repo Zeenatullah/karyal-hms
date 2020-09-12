@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\foodMenu;
+use App\FoodMenu;
 
 
 class FoodmenuController extends Controller
@@ -99,7 +99,7 @@ class FoodmenuController extends Controller
      */
     public function edit($id)
     {
-        $foods = foodMenu::find($id); 
+        $foods = FoodMenu::find($id); 
         return view('dashboard.foods.edit')->with('foods', $foods);
     }
 
@@ -141,7 +141,7 @@ class FoodmenuController extends Controller
         }
 
 
-        $food = foodMenu::find($id);
+        $food = FoodMenu::find($id);
         $food->food_drink = $request->input('food_drink');
         $food->foodName = $request->input('foodName');
         $food->foodPrice = $request->input('foodPrice');
@@ -160,7 +160,7 @@ class FoodmenuController extends Controller
     public function destroy($id)
     {
         
-        $food = foodMenu::find($id);
+        $food = FoodMenu::find($id);
 
         // if($food->foodImage != 'no_image.jpeg'){
         //     Storage::delete('public/food_images'.$food->foodImage);
