@@ -94,9 +94,9 @@
                 </div>
             </div>
             <div class="map">
-                {{-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d27175.53731647028!2d65.70512265585556!3d31.6354338780396!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2946be6523a86c78!2sKandahar%20University!5e0!3m2!1sen!2sbd!4v1594020798952!5m2!1sen!2sbd"
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d27175.53731647028!2d65.70512265585556!3d31.6354338780396!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2946be6523a86c78!2sKandahar%20University!5e0!3m2!1sen!2sbd!4v1594020798952!5m2!1sen!2sbd"
                     width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
-                </iframe> --}}
+                </iframe>
             </div>
         </div>
     </section>

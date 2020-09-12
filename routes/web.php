@@ -71,6 +71,14 @@ Route::middleware(['check.redirect', 'can:access-admin-area'])->group(function (
     Route::get('/dboard/weekly', 'ReportsController@weekly');
     Route::get('/dboard/monthly', 'ReportsController@monthly');
     Route::get('/dboard/grand', 'ReportsController@grand');
+
+    Route::get('/dboard/dailyPrint', 'ReportsController@day');
+    Route::get('/dboard/weeklyPrint', 'ReportsController@week');
+    Route::get('/dboard/monthlyPrint', 'ReportsController@month');
+    Route::get('/dboard/grandPrint', 'ReportsController@total');
+
+    
+    
     Route::get('/dboard/register', 'ReportsController@register');
 
     Route::get('/dboard/users/{service}', 'UserController@store');

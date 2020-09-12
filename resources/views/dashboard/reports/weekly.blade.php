@@ -9,6 +9,12 @@
 	<a href="/dboard/weekly" class="h3 btn btn-danger m-4" style="margin: 5px">Weekly</a> 
 	<a href="/dboard/monthly" class="h3 btn btn-primary m-4" style="margin: 5px">Monthly</a> 
 	<a href="/dboard/grand" class="h3 btn btn-primary m-4" style="margin: 5px">Grand</a> 
+	<div class="row">
+		<span class="col-lg-10"></span>
+		<li class=" btn btn-primary" style="width: 80px">
+			<a href="/dboard/weeklyPrint" style="color: white;">@lang('text.Details')</a>
+		</li>
+	</div>
 @endsection
 @section('contents')
 	<div class="panel panel-container">
@@ -48,25 +54,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					Site Traffic Overview
-					<ul class="pull-right panel-settings panel-button-tab-right">
-						<li class="dropdown">
-							<a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#"></a>
-						</li>
-					</ul>
-					<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
-				<div class="panel-body">
-					<div class="canvas-wrapper">
-						<canvas class="main-chart" id="line-chart" height="200" width="800"></canvas>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 	<div class="row">
 		<div class="col-xs-6 col-md-3">
 			<div class="panel panel-default">

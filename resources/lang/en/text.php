@@ -54,6 +54,7 @@ return [
     'AdminRoomText' => 'Select the service that the room has',
     'ShowRoomText' => 'Room info',
     'Wifi' => 'Wifi',
+    'Booked Rooms' => 'Booked Rooms',
     'AC' => 'A/C',
     'Television' => 'Television',
     'Taken' => 'Taken',
@@ -71,11 +72,14 @@ return [
     // Foods
     // ---------
     'Type' => 'Type',
+    'Details' => 'Details',
+    'Ordered food' => 'Ordered food',
     'Delete' => 'Delete',
     'Edit' => 'Edit',
     'Go back' => 'Go back',
     'Drinkings' => 'Drinkings',
     'Foods' => 'Foods',
+    'Food Menu' => 'Food Menu',
     'headTextFood' => 'Previous values are written',
     'Choose one' => 'Choose one',
     'HeadText' => 'Add food information accurately',

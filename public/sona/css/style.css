@@ -606,13 +606,16 @@ ul, ol {
 	height: 46px;
 	margin-top: 30px;
 }
+.room-slider,
 .hero-slider {
+	direction: ltr;
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	left: 0;
 	top: 0;
 }
+.room-slider.owl-carousel .owl-dots,
 .hero-slider.owl-carousel .owl-dots {
 	position: absolute;
 	left: 0;
@@ -620,6 +623,7 @@ ul, ol {
 	width: 100%;
 	text-align: center;
 }
+.room-slider.owl-carousel .owl-dots button,
 .hero-slider.owl-carousel .owl-dots button {
 	height: 6px;
 	width: 6px;
@@ -631,14 +635,17 @@ ul, ol {
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
 }
+.room-slider.owl-carousel .owl-dots button.active,
 .hero-slider.owl-carousel .owl-dots button.active {
 	width: 30px;
 	border-radius: 50px;
 	opacity: 1;
 }
+.room-slider.owl-carousel .owl-dots button:last-child,
 .hero-slider.owl-carousel .owl-dots button:last-child {
 	margin-right: 0;
 }
+.room-slider .owl-stage-outer, .room-slider .owl-stage, .room-slider .owl-item, .room-slider .hs-item,
 .hero-slider .owl-stage-outer, .hero-slider .owl-stage, .hero-slider .owl-item, .hero-slider .hs-item {
 	height: 100%;
 }

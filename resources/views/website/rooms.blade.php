@@ -53,7 +53,16 @@
                 @foreach ($rooms as $room)
                     <div class="col-lg-4 col-md-6">
                         <div class="room-item">
-                            <img src="/storage/room_images/{{$imagesArray[$room->id -1]}}" alt="Room images" width="100%">
+                            <div class="ri-text" style="height: 209px; position: relative">
+                                <div class="room-slider owl-carousel" style="direction: ltr">
+    
+                                    @foreach (\App\RoomImages::where('roomId', $room->id)->get() as $image)
+                                        <div class="hs-item set-bg" data-setbg="/storage/room_images/{{$image->imageName}}"></div>
+                                    @endforeach
+                                    
+                                </div>
+                            </div>
+                            {{-- <img src="/storage/room_images/{{ $imagesArray[$room->id -1] }}" alt="Room images" width="100%"> --}}
                             <div class="ri-text">
                                 <h4>@lang('text.Room number'): {{ $room->id }}</h4>
                                 <h3>@lang('text.Price'): {{ $room->price }} @lang('text.Afs')</h3>
@@ -80,9 +89,6 @@
                 @endforeach
                 <div class="col-lg-12">
                     <div class="room-pagination">
-                        {{-- <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">Next <i class="fa fa-long-arrow-right"></i></a> --}}
                     </div>
                 </div>
             </div>

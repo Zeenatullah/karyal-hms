@@ -18,17 +18,24 @@ class WebsiteController extends Controller
     }
 
     public function rooms(){
+        
+        // $rooms = Room::find($id);
+        // $roomImages = RoomImages::where('roomId', $id)->get();
+
         $rooms = Room::all();
         $images = RoomImages::all();
         $image_id = 0;
+
         $imagesArray = array( );
         foreach ($images as $image ) {
             if( $image->roomId != $image_id){
                 $image_id = $image->roomId;
                 array_push($imagesArray, $image->imageName);
-                continue;
             }
         }
+
+        // return $imagesArray;
+        
         return view('website.rooms')->with('rooms', $rooms)->with('imagesArray', $imagesArray);
     }
 

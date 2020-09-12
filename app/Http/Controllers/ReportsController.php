@@ -6,7 +6,7 @@ Use Carbon\Carbon;
 use App\Employee;
 use App\User;
 use App\Room;
-use App\foodMenu;
+use App\FoodMenu;
 use App\Contact;
 use App\RoomBooking;
 use App\Food;
@@ -56,6 +56,24 @@ class ReportsController extends Controller
                                               ->with('todayFoodsPayment', $todayFoodsPayment);
     }
 
+    public function day(){
+        $users = User::whereDay('created_at', date('d'))->whereMonth('created_at', date('m'))->get();
+        $employee = Employee::whereDay('created_at', date('d'))->whereMonth('created_at', date('m'))->get();
+        $rooms = Room::whereDay('created_at', date('d'))->whereMonth('created_at', date('m'))->get();
+        $foodmenu = FoodMenu::whereDay('created_at', date('d'))->whereMonth('created_at', date('m'))->get();
+        $bookedRooms = RoomBooking::whereDay('created_at', date('d'))->whereMonth('created_at', date('m'))->get();
+        $registeredCustomers = Customer::whereDay('created_at', date('d'))->whereMonth('created_at', date('m'))->get();
+        $food = Food::whereDay('created_at', date('d'))->whereMonth('created_at', date('m'))->get();
+
+
+        return view('dashboard.prints.daily')->with('users', $users)
+                                             ->with('employees', $employee)
+                                             ->with('rooms', $rooms)
+                                             ->with('foods', $foodmenu)
+                                             ->with('roomBooking', $bookedRooms)
+                                             ->with('customers', $registeredCustomers)
+                                             ->with('bookedFoods', $food);
+    }
     public function weekly (){
         $startOfWeek = Carbon::now()->startOfWeek()->format('Y-m-d H:i');
         $endOfWeek = Carbon::now()->endOfWeek()->format('Y-m-d H:i');
@@ -91,7 +109,35 @@ class ReportsController extends Controller
                                               ->with('thisWeekFoodsPayment', $thisWeekFoodsPayment);
     }
 
-    
+    public function week(){
+        
+        $startOfWeek = Carbon::now()->startOfWeek()->format('Y-m-d H:i');
+        $endOfWeek = Carbon::now()->endOfWeek()->format('Y-m-d H:i');
+
+        $users = User::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
+        $employee = Employee::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
+        $rooms = Room::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
+        $foodmenu = FoodMenu::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
+        $bookedRooms = RoomBooking::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
+        $registeredCustomers = Customer::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
+        $food = Food::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
+
+        // return $users;
+        // return    $employee;
+        // return $rooms;
+        // return    $foodmenu;
+        // return   $bookedRooms; 
+        // return    $registeredCustomers;
+        // return  $food;
+
+        return view('dashboard.prints.weekly')->with('users', $users)
+                                             ->with('employees', $employee)
+                                             ->with('rooms', $rooms)
+                                             ->with('foods', $foodmenu)
+                                             ->with('roomBooking', $bookedRooms)
+                                             ->with('customers', $registeredCustomers)
+                                             ->with('bookedFoods', $food);
+    }
 
     public function monthly (){
         
@@ -126,7 +172,33 @@ class ReportsController extends Controller
                                               ->with('thisMonthFoodsPayment', $thisMonthFoodsPayment);
 
     }
+    public function month(){
+        
 
+        $users = User::whereMonth('created_at', date('m'))->get();
+        $employee = Employee::whereMonth('created_at', date('m'))->get();
+        $rooms = Room::whereMonth('created_at', date('m'))->get();
+        $foodmenu = FoodMenu::whereMonth('created_at', date('m'))->get();
+        $bookedRooms = RoomBooking::whereMonth('created_at', date('m'))->get();
+        $registeredCustomers = Customer::whereMonth('created_at', date('m'))->get();
+        $food = Food::whereMonth('created_at', date('m'))->get();
+
+        // return $users;
+        // return    $employee;
+        // return $rooms;
+        // return    $foodmenu;
+        // return   $bookedRooms; 
+        // return    $registeredCustomers;
+        // return  $food;
+
+        return view('dashboard.prints.monthly')->with('users', $users)
+                                             ->with('employees', $employee)
+                                             ->with('rooms', $rooms)
+                                             ->with('foods', $foodmenu)
+                                             ->with('roomBooking', $bookedRooms)
+                                             ->with('customers', $registeredCustomers)
+                                             ->with('bookedFoods', $food);
+    }
 
     public function grand(){
                 
@@ -161,8 +233,31 @@ class ReportsController extends Controller
 
     }
 
-    public function register(){
-        return "test";
+    public function total(){
+
+        $users = User::all();
+        $employee = Employee::all();
+        $rooms = Room::all();
+        $foodmenu = FoodMenu::all();
+        $bookedRooms = RoomBooking::all();
+        $registeredCustomers = Customer::all();
+        $food = Food::all();
+
+        // return $users;
+        // return    $employee;
+        // return $rooms;
+        // return    $foodmenu;
+        // return   $bookedRooms; 
+        // return    $registeredCustomers;
+        // return  $food;
+
+        return view('dashboard.prints.grand')->with('users', $users)
+                                             ->with('employees', $employee)
+                                             ->with('rooms', $rooms)
+                                             ->with('foods', $foodmenu)
+                                             ->with('roomBooking', $bookedRooms)
+                                             ->with('customers', $registeredCustomers)
+                                             ->with('bookedFoods', $food);
     }
-    
+
 }

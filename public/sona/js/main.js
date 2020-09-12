@@ -73,6 +73,21 @@
         mouseDrag: false
     });
 
+    
+   $(".room-slider").owlCarousel({
+        loop: true,
+        margin: 0,
+        items: 1,
+        dots: true,
+        animateOut: 'fadeOut',
+        animateIn: 'fadeIn',
+        smartSpeed: 1200,
+        // autoWidth: true,
+        autoHeight: false,
+        autoplay: true,
+        mouseDrag: false
+    });
+
     /*------------------------
 		Testimonial Slider
     ----------------------- */
