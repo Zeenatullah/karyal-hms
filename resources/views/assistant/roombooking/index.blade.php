@@ -29,11 +29,12 @@
 								</div>
 
 						{{-- Form Section --}}
-								<div class="contact_form_container">
+								{{-- <div class="contact_form_container"> --}}
+								<div class="contact_form_container users-frm" style="border-radius: 50px; background-color: #42465cfa; padding: 50px;" >
 									{!! Form::open(['action' => 'RoomBookingController@store', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
 										<div class="users-frm" >
 											<div class="dropdown col-lg-11 input-group">
-												<select class="btn btn-secondary dropdown-toggle col-lg-12" name="customerId" required>
+												<select class="btn btn-secondary dropdown-toggle col-lg-12" name="customerId" required style="background-color: white; color: black">
 													@if(count($customers) > 0)
 														<div class="dropdown-menu col-lg-12" aria-labelledby="dropdownMenuButton">
 															<option selected hidden >@lang('text.SelectCustomer')</option>
@@ -60,7 +61,7 @@
 										<br>
 										<div>
 											<div class="dropdown col-lg-11 input-group">
-												<select class="btn btn-secondary dropdown-toggle col-lg-12" name="roomId" required>
+												<select class="btn btn-secondary dropdown-toggle col-lg-12" name="roomId" required style="background-color: white; color: black">
 													@if(count($roomBooking) >= count($rooms))
 														<div class="dropdown-menu col-lg-12" aria-labelledby="dropdownMenuButton"> 
 															<option selected disabled>@lang('text.No room available')</option>
@@ -94,26 +95,23 @@
 										<div class="row text-align">
 											<div class="input-group col-lg-11">
 												<div class="col-lg-3">
-													<label  style="width: 140%; border-radius: 5px; padding: 8px; height: 40px; color: white; background-color: #6c757d; text-align: center" for="startDate">@lang('text.Start date')</label>
+													<label  style="width: 140%; border-radius: 5px; padding: 8px; height: 40px; color: white;  text-align: center" for="startDate">@lang('text.Start date')</label>
 													<input type="date"  style="width: 140% " class="form-control" id="startDate" name="startDate"  required>
 												</div>
 												
 												<div class="col-lg-1"></div>
 												<div class="col-lg-3">
-													<label  style="width: 140%; border-radius: 5px; padding: 8px; height: 40px; color: white; background-color: #6c757d; text-align: center" for="endDate">@lang('text.End date')</label>
+													<label  style="width: 140%; border-radius: 5px; padding: 8px; height: 40px; color: white;  text-align: center" for="endDate">@lang('text.End date')</label>
 													<input type="date"  style="width: 140% " class="form-control" id="endDate" name="endDate" required>
 												</div>
 
 												<div class="col-lg-1"></div>
 												<div class="col-lg-3">
-													<label style="width: 140%; border-radius: 5px; padding: 8px; height: 40px; color: white; background-color: #6c757d; text-align: center" for="payment">@lang('text.Payment')</label>
-													<input type="number" style="width: 140% " class="form-control" id="payment" name="payment" required placeholder={{ __('text.EnterPayment')}}>
+													<label style="width: 140%; border-radius: 5px; padding: 8px; height: 40px; color: white;  text-align: center" for="payment">@lang('text.Payment')</label>
+													<input type="number" style="width: 140% " class="form-control" id="payment" name="payment" required placeholder="@lang('text.EnterPayment')">
 												</div>
 											</div>
-										</div>
-										<div class="dropdown col-lg-12 input-group">
-											<input type="text" class="contact_input col-lg-11" placeholder="" disabled style="width: 800px">
-										</div>
+										</div><br>
 										<div class="row">
 											<div class="col-lg-5"></div>
 											{{Form::submit(__('text.Book now'), ['class' =>'contact_button'])}}

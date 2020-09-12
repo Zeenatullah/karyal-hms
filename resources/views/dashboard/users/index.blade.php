@@ -2,14 +2,14 @@
 @section('content')
 
 {{-- Sidebar start --}}
-	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar" style="height: 540px">
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<div class="profile-sidebar">
 			<div class="profile-userpic">
 				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">Username</div>
-				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+				<div class="profile-usertitle-name">{{ Auth::user()->name }}</div>
+				<div class="profile-usertitle-status"><span class="indicator label-success"></span> Online</div>
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -45,7 +45,7 @@
 	</div>
 {{-- Sidebar End --}}
 {{-- Top section in main --}}
-	<div class="col-sm-9  col-lg-10 {{ App::getLocale() !== "ps" ? 'col-sm-offset-3 col-lg-offset-2' : '' }} main" style="background-color: lightgrey" id="ps_main">
+	<div class="col-sm-9  col-lg-10 {{ App::getLocale() !== "ps" ? 'col-sm-offset-3 col-lg-offset-2' : '' }} main" style="background-color: " id="ps_main">
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#">
@@ -59,17 +59,54 @@
 			<div class="col-lg-12">
 				<h1 class="page-header">@lang('text.Users')</h1>
 			</div>
-			
+			<div class="col-lg-1"></div>			
 			<div class="col-lg-10">
 				<h3>@lang('text.AddUserText')</h3>
 			</div>
 			<br>
 		</div>
+		<br><br>
 {{-- Top section in main End here --}}
 
 {{-- Form section start here --}}
 	<div class="row">
-		<iframe src="/register" frameborder="0" width="100%" height="600px"></iframe>
+		<div class="col-lg-1"></div>
+		<div class="col-lg-10" style="background-color: #42465cfa; color: white; padding: 30px; border-radius: 10px">
+
+			<div class="col-lg-1"></div>
+			<div class="col-lg-10" >
+				{!! Form::open(['action' => 'ReceptionistController@store', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
+				<div class="form-group col-lg-5">
+					<label for="name" style="padding: 0 15px; font-size: 1.1em">@lang('text.Name')</label>
+					<input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" required>
+				</div>
+				<div class="col-lg-1"></div>
+				<div class="form-group col-lg-5">
+					<label for="email" style="padding: 0 15px; font-size: 1.1em">@lang('text.Email')</label>
+					<input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" required>
+				</div>
+				<br>
+				<div class="form-group col-lg-5">
+					<label for="password" style="padding: 0 15px; font-size: 1.1em">@lang('text.UserType')</label>  
+					<select  id="user_type"  class="form-control"  name="user_type" required style="height: 45px">
+						<option selected disabled>@lang('text.SelectOne')</option>
+						<option value="Admin">Admin</option>
+						<option value="Receptionist">Receptionist</option>
+					  </select>
+				</div>
+				<div class="col-lg-1"></div>
+				<div class="form-group col-lg-5">
+					<label for="exampleInputEmail1" style="padding: 0 15px; font-size: 1.1em">@lang('text.Password')</label>
+					<input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
+				</div>
+				
+				<div class="col-lg-8"></div>
+				<div class="form-group col-lg-2">
+					<button type="submit" class="btn btn-primary" style="width: 130px; margin: 10px 40px">@lang('text.Submit')</button>
+				</div>
+				{!! Form::close() !!}  
+			</div>
+		</div>
 	</div>
 		<br><br><br>
 		<div class="row">

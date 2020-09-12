@@ -8,8 +8,8 @@
 				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">Username</div>
-				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+				<div class="profile-usertitle-name">{{ Auth::user()->name }}</div>
+				<div class="profile-usertitle-status"><span class="indicator label-success"></span> Online</div>
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -63,10 +63,10 @@
 		<div class="row">
 			<section class="contact-section spad users-frm">
 				<div class="container">   
-					<div class="row" style="border-radius: 50px;background-color: #002bff30;">
+					<div class="row" style="border-radius: 50px;background-color: #42465cfa; color: white">
 						<div class="col-lg-2"></div>
 						<div class="col-lg-10">
-							<h3>@lang('text.AddEmployeeText')</h3>
+							<h3 style="color:white;">@lang('text.AddEmployeeText')</h3>
 						</div>
 						<br>
 						<div class="col-lg-2"></div>
@@ -75,50 +75,50 @@
 								<br>
 								<div class="row">
 									<div class="form-group col-lg-5">
-										<label for="name">@lang('text.Name')</label>
-										<input type="text" name="name" id="name" class="form-control" placeholder="@lang('text.Name')">
-										{{-- {{ Form::text('name', '', ['class' => 'form-control', 'placeholder' =>'Employee Name'])}} --}}
+										<label style="margin: 10px" for="name">@lang('text.Name')</label>
+										<input type="text" required name="name" id="name" class="form-control" placeholder="@lang('text.Name')" oninvalid="this.setCustomValidity('@lang('text.invalidField')')"  onvalid="this.setCustomValidity('text.Name')">
 									</div>
+									
 									<div class="form-group col-lg-2"></div>
 									<div class="form-group col-lg-5">
-										<label for="lastName">@lang('text.Last Name')</label>
-										<input type="text" name="lastName" id="lastName" class="form-control" placeholder="@lang('text.Last Name')">
+										<label style="margin: 10px" for="lastName">@lang('text.Last Name')</label>
+										<input type="text" required name="lastName" id="lastName" class="form-control" placeholder="@lang('text.Last Name')" oninvalid="this.setCustomValidity('@lang('text.invalidField')')" onvalid="this.setCustomValidity('text.Name')">
 									</div>
 								</div>
 								<br>
 								<div class="row">
 									<div class="form-group col-lg-5">
-										<label for="phoneNo">@lang('text.Phone number')</label>
-										<input type="text" name="phoneNo" id="phoneNo" class="form-control" placeholder="@lang('text.Phone number')">
+										<label style="margin: 10px" for="phoneNo">@lang('text.Phone number')</label>
+										<input type="text" required name="phoneNo" id="phoneNo" class="form-control" placeholder="@lang('text.Phone number')" oninvalid="this.setCustomValidity('@lang('text.invalidField')')" onvalid="this.setCustomValidity('text.Name')">
 									</div>
 									<div class="form-group col-lg-2"></div>
 									<div class="form-group col-lg-5">
-										<label for="salary">@lang('text.Salary')</label>
-										<input type="text" name="salary" id="salary" class="form-control" placeholder="@lang('text.Salary')">
+										<label style="margin: 10px" for="salary">@lang('text.Salary')</label>
+										<input type="text" required name="salary" id="salary" class="form-control" placeholder="@lang('text.Salary')" oninvalid="this.setCustomValidity('@lang('text.invalidField')')" onvalid="this.setCustomValidity('text.Name')">
 									</div>
 								</div>
 								<br>
 								<div class="row">
 									<div class="form-group col-lg-5">
-										<label for="employee_type">@lang('text.Position')</label>
+										<label style="margin: 10px" for="employee_type" style="margin: 10px">@lang('text.Position')</label>
 										<br>
-										<select class="custom-select" id="employee_type"  class="form-control @error('employee_type') is-invalid @enderror" name="employee_type" value="{{ old('employee_type') }}" required autocomplete="employee_type" style="width: 180px; height:30px; border-radius: 5px; padding-left: 10px">
-											<option selected disabled hidden>@lang('text.SelectOne')</option>
-											<option value="Moderator">Moderator</option>
-											<option value="Receptionist">Receptionist</option>
-											<option value="Cleaner">Cleaner</option>
-											<option value="Cook">Cook</option>
-											<option value="Food transporter">Food transporter</option>
+										<select id="employee_type" class="form-control" name="employee_type" value="{{ old('employee_type') }}" style="width: 300px; height:45px; border-radius: 5px; padding-left: 5px">
+											<option selected hidden>@lang('text.SelectOne')</option>
+											<option value="Moderator">@lang('text.Moderator')</option>
+											<option value="Receptionist">@lang('text.Receptionist')</option>
+											<option value="Cleaner">@lang('text.Cleaner')</option>
+											<option value="Cook">@lang('text.Cook')</option>
+											<option value="Food transporter">@lang('text.Food transporter')</option>
 										</select>
 									</div>
 									<div class="form-group col-lg-2"></div>
 									<div class="form-group col-lg-5">
-										<label for="tazkira">@lang('text.Tazkira')</label>
+										<label style="margin: 10px" for="tazkira">@lang('text.Tazkira')</label>
 										{{Form::file('tazkira', ['multiple'])}}
 									</div>
 								</div>
 								<br>
-								{{Form::submit(__('text.Submit'), ['class' =>'btn btn-primary'])}}
+								{{Form::submit(__('text.Submit'), ['class' =>'btn btn-primary col-lg-2'])}}
 								<br><br>
 							{!! Form::close() !!}  
 						</div>
@@ -128,9 +128,9 @@
 		</div>
 		<div class="container col-lg-offset-1 col-lg-10 users-frm" style="margin-top: 50px;" id="">
 			<section >
-				<table class="table table-striped table-bordered">
+				<table class="table table-bordered table-stripped">
 					<thead class="thead-light">
-						<tr>
+						<tr class="">
 							<th scope="col">@lang('text.Number')</th>
 							<th scope="col">@lang('text.Name')</th>
 							<th scope="col">@lang('text.Last Name')</th>

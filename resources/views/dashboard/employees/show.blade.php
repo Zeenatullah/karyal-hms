@@ -8,8 +8,8 @@
 					<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
 				</div>
 				<div class="profile-usertitle">
-					<div class="profile-usertitle-name">Username</div>
-					<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+					<div class="profile-usertitle-name">{{ Auth::user()->name }}</div>
+					<div class="profile-usertitle-status"><span class="indicator label-success"></span> Online</div>
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -61,7 +61,7 @@
 				</div>
 				
 				<div class="col-lg-10 col-lg-offset-1">
-					<h3>@lang('text.ShowEmployeeText')</h3>
+					<h3 >@lang('text.ShowEmployeeText')</h3>
 				</div>
 			</div>
 			{{-- Top section in main End here --}}
@@ -69,23 +69,24 @@
 			<div class="container users-frm">
 				<br><br><div class="col-lg-offset-1"></div>
 				<div>
-					<div class="col-md-4 col-sm-4"  style="border-radius: 20px;background-color: #002bff30;">
+					<div class="col-md-4 col-sm-4"  style="border-radius: 20px;background-color: #42465cfa; color: white">
 						<table class="table-striped ">
-							<thead>								<tr>
-									<th style="width: 200px"><h3>@lang('text.Name')</h3></th>
-									<th style="width: 300px"><h3> {{$employees->name}} </h3></th>
+							<thead>
+								<tr>
+									<th style="width: 200px;"><h3 style="color: white">@lang('text.Name')</h3></th>
+									<th style="width: 300px;"><h3 style="color: white"> {{$employees->name}} </h3></th>
 								</tr>
 								<tr>
-									<th><h3>@lang('text.Last Name')</h3></th>
-									<th><h3> {{$employees->lastName}} </h3></th>
+									<th><h3 style="color:white;">@lang('text.Last Name')</h3></th>
+									<th><h3 style="color:white;"> {{$employees->lastName}} </h3></th>
 								</tr>
 								<tr>
-									<th><h3>@lang('text.Phone number')</h3></th>
-									<th><h3> {{$employees->phoneNo}} </h3></th>
+									<th><h3 style="color:white;">@lang('text.Phone number')</h3></th>
+									<th><h3 style="color:white;"> {{$employees->phoneNo}} </h3></th>
 								</tr>
 								<tr>
-									<th><h3>@lang('text.Salary')</h3></th>
-									<th><h3> {{$employees->salary}} </h3></th>
+									<th><h3 style="color:white;">@lang('text.Salary')</h3></th>
+									<th><h3 style="color:white;"> {{$employees->salary}} </h3></th>
 								</tr>
 								<tr>
 									<th><small>@lang('text.Hired on')</small></th>

@@ -80,28 +80,15 @@
 							<input type="number"  class="form-control" style="background-color: #3b1f1f00; color: white; border:none" name="quantity"  placeholder="@lang('text.Food quantity')234" required value="{{ $orderedFood->quantity }}">
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-lg-1"></div>
-						<input type="text" class="contact_input col-lg-10 " style="border-radius: 20px" placeholder="" disabled>
-					</div>
-					<div class="row">
+					<hr>
+					<div class="row mt-5">
 						<div class="col-lg-2 offset-lg-0"></div>
 						{{Form::hidden('_method', 'PUT')}}
-						{{Form::submit(__('text.Submit'), ['class' =>'btn btn-success', ])}}
+						{{Form::submit(__('text.Submit'), ['class' =>'btn btn-success col-lg-1', ])}}
+						<div class="offset-lg-1"></div>
+						<a href="/food" class="btn btn-primary col-lg-1">@lang('text.Go back')</a>
 					</div>
 				{!! Form::close() !!} 
-			</div>
-
-			<div class="row" style="">
-				<div class="col-lg-10">
-					{!! Form::open(['action' => ['FoodController@destroy', $orderedFood->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
-					{{Form::hidden('_method', 'DELETE')}}
-					{{Form::submit(__('text.Delete'), ['class' => 'btn btn-danger'])}}
-					{!! Form::close() !!}
-				</div>
-				<div class="col-lg-2">
-					<a href="/food" class="btn btn-primary">@lang('text.Go back')</a>
-				</div>
 			</div>
 
 			{{-- Food Room section end	 --}}

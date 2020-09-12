@@ -47,7 +47,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6 p-5 m-5">
                     <div class="room-item">
-                        <img src="../storage/Services/Wifi.png" style="width: 360px; height: 230px">
+                        <img src="img/services/wifi.png" style="width: 360px; height: 230px">
                         <div class="ri-text">
                             <h4>@lang('text.wifi')</h4>
                             <h3> @lang('text.Free')<span> / 24 @lang('text.Hours') </span></h3>
@@ -56,7 +56,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6 p-5 m-5">
                     <div class="room-item">
-                        <img src="../storage/Services/AC.jpg" style="width: 360px; height: 230px">
+                        <img src="img/services/ac.jpg" style="width: 360px; height: 230px">
                         <div class="ri-text">
                             <h4>@lang('text.Airconditioner')</h4>
                             <h3> @lang('text.Free')<span> / 24 @lang('text.Hours') </span></h3>
@@ -65,7 +65,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6 p-5 m-5">
                     <div class="room-item">
-                        <img src="../storage/Services/Television.jpg" style="width: 360px; height: 230px">
+                        <img src="img/services/television.jpg" style="width: 360px; height: 230px">
                         <div class="ri-text">
                             <h4>@lang('text.tv')</h4>
                             <h3> @lang('text.Free')<span> / 24 @lang('text.Hours') </span></h3>

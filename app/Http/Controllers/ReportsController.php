@@ -19,24 +19,17 @@ use Illuminate\Http\Request;
 class ReportsController extends Controller
 {
     public function daily(){
-        // return date('d');
         $todayRegisteredCustomers = Customer::whereDay('created_at', date('d'))->whereMonth('created_at', date('m'))->count();
-        // return $todayRegisteredCustomers;
-        $todayFeedbacks = Contact::whereDay('created_at', date('d'))->whereMonth('created_at', date('m'))->count();
         $todayBookedRooms = RoomBooking::whereDay('created_at', date('d'))->whereMonth('created_at', date('m'))->count();
-        $todayBills = Food::whereDay('created_at', date('d'))
-                            ->whereMonth('created_at', date('m'))
-                            ->count();
-        // return $todayBills;
+        $todayBills = Food::whereDay('created_at', date('d'))->whereMonth('created_at', date('m'))->count();
         $bookedRooms = RoomBooking::whereDay('created_at', date('d'))->whereMonth('created_at', date('m'))->get();
         $orderedFoods = Food::whereDay('created_at', date('d'))->whereMonth('created_at', date('m'))->get();
+        $freeRooms = Room::where('taken', 0)->count();
+        $totalRooms = Room::all()->count();
+
 
         $todayRoomsPayment = 0;
         $todayFoodsPayment = 0; 
-        
-        $freeRooms = Room::where('taken', 0)->count();
-
-        $totalRooms = Room::all()->count();
         
         $totalCustomers = Room::where('taken', 1)->get();
         
@@ -54,7 +47,6 @@ class ReportsController extends Controller
         }
 
         return view('dashboard.reports.daily')->with('todayRegisteredCustomers', $todayRegisteredCustomers)
-                                              ->with('todayFeedbacks', $todayFeedbacks)
                                               ->with('todayBookedRooms', $todayBookedRooms)
                                               ->with('todayBills', $todayBills)
                                               ->with('todayRoomsPayment', $todayRoomsPayment)
@@ -68,33 +60,109 @@ class ReportsController extends Controller
         $startOfWeek = Carbon::now()->startOfWeek()->format('Y-m-d H:i');
         $endOfWeek = Carbon::now()->endOfWeek()->format('Y-m-d H:i');
         
-        $foods = Food::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
+        $thisWeekRegisteredCustomers = Customer::whereBetween('created_at', [$startOfWeek, $endOfWeek])->count();
+        $thisWeekBills = Food::whereBetween('created_at', [$startOfWeek, $endOfWeek])->count();
+        $thisWeekBookedRooms = RoomBooking::whereBetween('created_at', [$startOfWeek, $endOfWeek])->count();
+        $freeRooms = Room::where('taken', 0)->count();
+        $totalRooms = Room::all()->count();
         
-        $todayRegisteredCustomers = Customer::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
-        $todayFeedbacks = Contact::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
-        $todayBookedRooms = RoomBooking::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
-        $todayBills = Food::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
         
-        $bookedRooms = RoomBooking::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
-        $orderedFoods = Food::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
+        $totalCustomers = Room::where('taken', 1)->get();
+        $ُthisWeekBookedRooms = RoomBooking::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
+        $thisWeekOrderedFoods = Food::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
+        
+        
+        $sumOfCustomers    = 0;
+        $thisWeekRoomsPayment = 0;
+        $thisWeekFoodsPayment = 0; 
+        
+        foreach ($totalCustomers as $customer ) {   $sumOfCustomers += $customer->numberOfPeople;  }
+        foreach ($ُthisWeekBookedRooms as $rooms ) { $thisWeekRoomsPayment += $rooms->payment; }
+        foreach ($thisWeekOrderedFoods as $bill) { $thisWeekFoodsPayment += $bill->totalPrice; }
 
-        // return $todayRegisteredCustomers;
-        return view('dashboard.reports.weekly')->with('todayRegisteredCustomers', $todayRegisteredCustomers);
-        return view('dashboard.reports.weekly');
+        // return 'success';
+        return view('dashboard.reports.weekly')->with('thisWeekRegisteredCustomers', $thisWeekRegisteredCustomers)
+                                              ->with('thisWeekBills', $thisWeekBills)
+                                              ->with('thisWeekBookedRooms', $thisWeekBookedRooms)
+                                              ->with('freeRooms', $freeRooms)
+                                              ->with('totalRooms', $totalRooms)
+                                              ->with('sumOfCustomers', $sumOfCustomers)
+                                              ->with('thisWeekRoomsPayment', $thisWeekRoomsPayment)
+                                              ->with('thisWeekFoodsPayment', $thisWeekFoodsPayment);
     }
 
     
 
     public function monthly (){
-        return 'Monthly';
+        
+        $thisMonthRegisteredCustomers = Customer::whereMonth('created_at', date('m'))->count();
+        // return $thisMonthRegisteredCustomers;
+        $thisMonthBills = Food::whereMonth('created_at', date('m'))->count();
+        $thisMonthBookedRooms = RoomBooking::whereMonth('created_at', date('m'))->count();
+        $freeRooms = Room::where('taken', 0)->count();
+        $totalRooms = Room::all()->count();
+        
+        
+        $totalCustomers = Room::where('taken', 1)->get();
+        $ُthisMonthBookedRooms = RoomBooking::whereMonth('created_at', date('m'))->get();
+        $thisMonthOrderedFoods = Food::whereMonth('created_at', date('m'))->get();
+        
+        
+        $sumOfCustomers    = 0;
+        $thisMonthRoomsPayment = 0;
+        $thisMonthFoodsPayment = 0; 
+        
+        foreach ($totalCustomers as $customer ) {   $sumOfCustomers += $customer->numberOfPeople;  }
+        foreach ($ُthisMonthBookedRooms as $rooms ) { $thisMonthRoomsPayment += $rooms->payment; }
+        foreach ($thisMonthOrderedFoods as $bill) { $thisMonthFoodsPayment += $bill->totalPrice; }
+
+        return view('dashboard.reports.monthly')->with('thisMonthRegisteredCustomers', $thisMonthRegisteredCustomers)
+                                              ->with('thisMonthBills', $thisMonthBills)
+                                              ->with('thisMonthBookedRooms', $thisMonthBookedRooms)
+                                              ->with('freeRooms', $freeRooms)
+                                              ->with('totalRooms', $totalRooms)
+                                              ->with('sumOfCustomers', $sumOfCustomers)
+                                              ->with('thisMonthRoomsPayment', $thisMonthRoomsPayment)
+                                              ->with('thisMonthFoodsPayment', $thisMonthFoodsPayment);
 
     }
 
 
-    public function grand (){
-        return 'Grand';
+    public function grand(){
+                
+        $totalRegisteredCustomers = Customer::all()->count();
+        $totalBills = Food::all()->count();
+        $totalBookedRooms = RoomBooking::all()->count();
+        $freeRooms = Room::where('taken', 0)->count();
+        $totalRooms = Room::all()->count();
+        
+        
+        $totalCustomers = Room::where('taken', 1)->get();
+        $ُtotalBookedRooms = RoomBooking::all();
+        $totalOrderedFoods = Food::all();
+        
+        
+        $sumOfCustomers    = 0;
+        $totalRoomsPayment = 0;
+        $totalFoodsPayment = 0; 
+        
+        foreach ($totalCustomers as $customer ) {   $sumOfCustomers += $customer->numberOfPeople;  }
+        foreach ($ُtotalBookedRooms as $rooms ) { $totalRoomsPayment += $rooms->payment; }
+        foreach ($totalOrderedFoods as $bill) { $totalFoodsPayment += $bill->totalPrice; }
+
+        return view('dashboard.reports.grand')->with('totalRegisteredCustomers', $totalRegisteredCustomers)
+                                              ->with('totalBills', $totalBills)
+                                              ->with('totalBookedRooms', $totalBookedRooms)
+                                              ->with('freeRooms', $freeRooms)
+                                              ->with('totalRooms', $totalRooms)
+                                              ->with('sumOfCustomers', $sumOfCustomers)
+                                              ->with('totalRoomsPayment', $totalRoomsPayment)
+                                              ->with('totalFoodsPayment', $totalFoodsPayment);
 
     }
 
-
+    public function register(){
+        return "test";
+    }
+    
 }

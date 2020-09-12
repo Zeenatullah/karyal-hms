@@ -13,7 +13,7 @@
 					<div class="container">
 						<div class="row">
 						
-						{{-- Message section --}}
+							{{-- Message section --}}
 
 							<div class="col-lg-2"></div>
 							<div class="col-lg-8 text-center">
@@ -21,54 +21,53 @@
 							</div>
 							<div class="col-lg-2"></div>
 
-						{{-- Form upper text --}}
-
-							<div class="col users-frm" >
+							{{-- Form upper text --}}
+							<div class="users-frm col-lg-12 mb-5">
 								<div class="section_title text-center">
 									<div style="font-size: 6em">@lang('text.CustomerTextHeader')</div>
 									<h1>@lang('text.CustomerTextHeader')</h1>
 									<p class="users-frm">@lang('text.CustomerText')</p>
 								</div>
+							</div>
 
-						{{-- Form Section --}}
-
-								<div class="contact_form_container">
+							{{-- Form Section --}}
+							<div class="users-frm col-lg-12" style="border-radius: 50px; background-color: #42465cfa; color: white; padding: 20px 50px;" >
+								<div class="contact_form_container" style="margin-top: 20px">
 									{!! Form::open(['action' => 'CustomerController@store', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
-
 										<div class="row">
 											<div class="col-lg-6">
-												<input style="padding-right: 10px" type="text" class="contact_input" placeholder=@lang('text.Name') required="required" name="name">
+												<input style="padding-right: 10px; font-size: 2em; height: 45px" type="text" class="contact_input" placeholder=@lang('text.Name') required="required" name="name">
 											</div>
 											<div class="col-lg-6">
-												<input style="padding-right: 10px" type="text" class="contact_input" placeholder=@lang('text.Last Name') required="required" name="lastName">
+												<input style="padding-right: 10px; font-size: 2em; height: 45px" type="text" class="contact_input" placeholder=@lang('text.Last Name') required="required" name="lastName">
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-lg-6">
-												<input style="padding-right: 10px" type="number" class="contact_input" placeholder=@lang('text.Phone number') required="required" name="phoneNumber">
+												<input style="padding-right: 10px; font-size: 2em; height: 45px" type="number" class="contact_input" placeholder=@lang('text.Phone number') required="required" name="phoneNumber">
 											</div>
 											<div class="col-lg-6">
-												<input style="padding-right: 10px" type="email" class="contact_input" placeholder=@lang('text.Email') required="required" name="email">
+												<input style="padding-right: 10px; font-size: 2em; height: 45px" type="email" class="contact_input" placeholder=@lang('text.Email') required="required" name="email">
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-lg-6">
-												<input style="padding-right: 10px" type="text" class="contact_input" placeholder=@lang('text.Province') required="required" name="province">
+												<input style="padding-right: 10px; font-size: 2em; height: 45px" type="text" class="contact_input" placeholder=@lang('text.Province') required="required" name="province">
 											</div>
-											<div class="input-group col-lg-6 mt-3" >
+											<div class="input-group col-lg-6 mt-2" >
 												<div class="custom-file">
-												  <input style="padding-right: 10px" type="file" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" required="required" name="tazkira">
-												  <label class="custom-file-label" for="inputGroupFile04">@lang('text.ChooseTazkiraImage')</label>
+													<input style="padding-right: 10px;" type="file" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" required="required" name="tazkira">
+													<label class="custom-file-label" for="inputGroupFile04">@lang('text.ChooseTazkiraImage')</label>
 												</div>
 											</div>
 										</div>
-										<input style="padding-right: 10px" type="text" class="contact_input" placeholder="" disabled>
 										<div class="row">
 											<div class="col-lg-5"></div>
 											{{Form::submit(__('text.Submit'), ['class' =>'contact_button'])}}
 
 										</div>
 									{!! Form::close() !!}  
+									<br>
 								</div>
 							</div>
 						</div>

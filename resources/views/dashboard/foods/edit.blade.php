@@ -8,8 +8,8 @@
                     <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
                 </div>
                 <div class="profile-usertitle">
-                    <div class="profile-usertitle-name">Username</div>
-                    <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+                    <div class="profile-usertitle-name">  {{ Auth::user()->name }} </div>
+                    <div class="profile-usertitle-status"><span class="indicator label-success"></span> Online</div>
                 </div>
                 <div class="clear"></div>
             </div>
@@ -65,7 +65,7 @@
 			</div>
 		</div>
         {{-- Top section in main End here --}}
-        <div class="container users-frm" style="border-radius: 50px;background-color: #002bff30; padding: 20px">
+        <div class="container users-frm" style="border-radius: 50px;background-color: #42465cfa; color: white; padding: 20px">
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <div class="card">
@@ -74,44 +74,39 @@
                                 <div class="col-lg-2"><h4></h4></div>
                                 <div class="col-lg-7 offset-lg-1">
                                     {!! Form::open(['action' => ['FoodmenuController@update', $foods->id], 'method' => 'POST', 'enctype' =>'multipart/form-data']) !!}
+                                        <label style="margin: 10px" for="food_drink">
+                                            @if ($foods->food_drink === "Drinkings")
+                                                @lang('text.Drinkings')
+                                            @else
+                                                @lang('text.Foods')
+                                            @endif
+                                        </label>
                                         <div class="row">
-                                            <label>
-                                                @if ($foods->food_drink === "Drinkings")
-                                                    @lang('text.Drinkings')
-                                                @else
-                                                    @lang('text.Foods')
-                                                @endif
-                                             </label>
-                                            <div class="dropdown col-lg-12 input-group">
-                                                <select class="btn btn-secondary dropdown-toggle col-lg-12" name="food_drink" required>
-                                                        <div class="dropdown-menu col-lg-12" aria-labelledby="dropdownMenuButton">
-                                                            <option selected disabled >@lang('text.SelectOne')</option>
-                                                            <a class="dropdown-item" href="#">
-                                                                <option value="{{$foods->food_drink}}" selected disabled hidden>
-                                                                    @if ($foods->food_drink === "Drinkings")
-                                                                        @lang('text.Drinkings')
-                                                                    @else
-                                                                        @lang('text.Foods')
-                                                                    @endif
-                                                                                            
-                                                                </option>
-                                                                <option value="drinkings">@lang('text.Drinkings')</option>
-                                                                <option value="food">@lang('text.Foods')</option>
-                                                            </a>
-                                                        </div>
+                                            <div class="form-group col-lg-12" >
+                                                <select class="form-control" name="food_drink" required id="food_drink" style="height: 45px">
+                                                    <option selected disabled >@lang('text.SelectOne')</option>
+                                                    <option value="{{$foods->food_drink}}" selected hidden>
+                                                        @if ($foods->food_drink === "Drinkings")
+                                                            @lang('text.Drinkings')
+                                                        @else
+                                                            @lang('text.Foods')
+                                                        @endif
+                                                    </option>
+                                                    <option value="drinkings">@lang('text.Drinkings')</option>
+                                                    <option value="food">@lang('text.Foods')</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <br>
                                         <div class="row">
                                             <div class="form-group col-lg-5">
-                                                <label>@lang('text.Name')</label>
+                                                <label style="margin: 10px">@lang('text.Name')</label>
                                                 {{ Form::text('foodName', $foods->foodName, ['class' => 'form-control', 'placeholder' =>'Name'])}}
                                             </div>
                                             <div class="form-group col-lg-2"></div>
                                             <div class="form-group col-lg-5">
-                                                <label>@lang('text.Price')</label>
-                                                {{ Form::text('foodPrice', $foods->foodPrice, ['class' => 'form-control' , 'placeholder' =>'Price', 'style' => 'width: 280px'])}}
+                                                <label style="margin: 10px">@lang('text.Price')</label>
+                                                {{ Form::text('foodPrice', $foods->foodPrice, ['class' => 'form-control' , 'placeholder' =>'Price'])}}
                                             </div>
                                         </div>
                                         <br>

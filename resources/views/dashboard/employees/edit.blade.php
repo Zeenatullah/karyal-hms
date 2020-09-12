@@ -2,14 +2,14 @@
     @section('content')
 
     {{-- Sidebar start --}}
-        <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar" style="height: 540px">
+        <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
             <div class="profile-sidebar">
                 <div class="profile-userpic">
                     <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
                 </div>
                 <div class="profile-usertitle">
-                    <div class="profile-usertitle-name">Username</div>
-                    <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+                    <div class="profile-usertitle-name">{{ Auth::user()->name }}</div>
+                    <div class="profile-usertitle-status"><span class="indicator label-success"></span> Online</div>
                 </div>
                 <div class="clear"></div>
             </div>
@@ -68,9 +68,9 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="container">   
-                            <div class="row" style="border-radius: 20px;background-color: #002bff30;">
+                            <div class="row" style="border-radius: 20px;background-color: #42465cfa; color: white">
                                 <div class="col-lg-10 col-lg-offset-1">
-                                    <h3>@lang('text.EditEmployeeText')</h3>
+                                    <h3 style="color: white">@lang('text.EditEmployeeText')</h3>
                                 </div>
                                 <div class="col-lg-2"></div>
                                 <div class="col-lg-7 offset-lg-1">
@@ -78,57 +78,57 @@
                                         <br>
                                         <div class="row">
                                             <div class="form-group col-lg-4">
-                                                <label for="name" >@lang('text.Name')</label>
+                                                <label for="name" style="margin: 10px">@lang('text.Name')</label>
                                                 {{ Form::text('name', $employees->name, ['class' => 'form-control', 'placeholder' =>'Employee Name', 'id' => 'name'])}}
                                             </div>
                                             <div class="form-group col-lg-3"></div>
                                             <div class="form-group col-lg-4">
-                                                <label for="lastName" >@lang('text.Last Name')</label>
+                                                <label for="lastName" style="margin: 10px">@lang('text.Last Name')</label>
                                                 {{ Form::text('lastName', $employees->lastName, ['class' => 'form-control' , 'placeholder' =>'Employee Last Name', 'id' => 'lastName'])}}
                                             </div>
                                         </div>
                                         <br>
                                         <div class="row">
                                             <div class="form-group col-lg-4">
-                                                <label for="PhoneNo" >@lang('text.Phone number')</label>
+                                                <label for="PhoneNo" style="margin: 10px">@lang('text.Phone number')</label>
                                                 {{ Form::number('phoneNo', $employees->phoneNo, ['class' => 'form-control', 'placeholder' =>'Phone number', 'id' => 'PhoneNo'])}}
                                             </div>
                                             <div class="form-group col-lg-3"></div>
                                             <div class="form-group col-lg-4">
-                                                <label for="salary" >@lang('text.Salary')</label>
+                                                <label for="salary" style="margin: 10px">@lang('text.Salary')</label>
                                                 {{ Form::number('salary', $employees->salary, ['class' => 'form-control' , 'placeholder' =>'Employee Salary', 'id' => 'salary'])}}
                                             </div>
                                         </div>
                                         <br>
                                         <div class="row">
                                             <div class="form-group col-lg-4">
-                                                <label for="employee_type" >@lang('text.Position')</label>
+                                                <label for="employee_type" style="margin: 10px">@lang('text.Position')</label>
                                                 <br>
-                                                <select class="custom-select" id="employee_type"  class="form-control" name="employee_type" value="{{ old('employee_type') }}" style="width: 200px; height:45px; border-radius: 5px; padding-left: 5px">
-                                                    <option selected disabled hidden>@lang('text.SelectOne')</option>
-                                                    <option value="Moderator">Moderator</option>
-                                                    <option value="Receptionist">Receptionist</option>
-                                                    <option value="Cleaner">Cleaner</option>
-                                                    <option value="Cook">Cook</option>
-                                                    <option value="Food transporter">Food transporter</option>
+                                                <select id="employee_type" class="form-control" name="employee_type" value="{{ old('employee_type') }}" style="width: 200px; height:45px; border-radius: 5px; padding-left: 5px">
+                                                    <option selected hidden>{{ $employees->employee_type }}</option>
+                                                    <option value="Moderator">@lang('text.Moderator')</option>
+                                                    <option value="Receptionist">@lang('text.Receptionist')</option>
+                                                    <option value="Cleaner">@lang('text.Cleaner')</option>
+                                                    <option value="Cook">@lang('text.Cook')</option>
+                                                    <option value="Food transporter">@lang('text.Food transporter')</option>
                                                 </select>
                                             </div>
                                             <div class="form-group col-lg-3"></div>
                                             <div class="form-group col-lg-4">
-                                                <label for="tazkira">@lang('text.Tazkira')</label>
-                                                <input type="file" id="tazkira" style="border: 1px solid black; border-radius: 5px; margin-top: 5px; width: 200px">
+                                                <label for="tazkira" style="margin: 10px">@lang('text.Tazkira')</label>
+                                                <input type="file" id="tazkira" style="border: 1px solid black; border-radius: 5px; margin-top: 5px; width: 200px" name="tazkira">
                                             </div>
                                         </div>
                                         <br>
                                         <div class="row">
                                             <div class="col-md-1"></div>
-                                            {{Form::submit(__('text.Submit'), ['class' =>'btn btn-info col-md-2'])}}
+                                                {{Form::submit(__('text.Submit'), ['class' =>'btn btn-info col-md-2'])}}
                                             <div class="col-md-4"></div>
                                             <a href="/dboard/employees" class="btn btn-primary col-md-2">@lang('text.Go back')</a>
                                         </div>
                                         {{Form::hidden('_method', 'PUT')}}
-                                        {!! Form::close() !!}  
-                                    <br>
+                                    {!! Form::close() !!}  
+                                    <br><br>
                                 </div>
                             </div>
                         </div>
@@ -136,4 +136,5 @@
                 </div>
             </div>
         </div>
+        <div style="height: 50px"></div>
 @endsection

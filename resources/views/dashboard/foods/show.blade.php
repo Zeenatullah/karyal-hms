@@ -8,8 +8,8 @@
 				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">Username</div>
-				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+				<div class="profile-usertitle-name">{{ Auth::user()->name }}</div>
+				<div class="profile-usertitle-status"><span class="indicator label-success"></span> Online</div>
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -66,16 +66,16 @@
 		</div>
         <div class="col-lg-4 col-lg-offset-1 users-frm">
             <div class="row">
-				<div class="users-frm" style="background-color: #cce4f6; border-radius: 10px; padding: 0px 25px;">
+				<div class="users-frm" style="background-color: #42465cfa; color: white; border-radius: 10px; padding: 0px 25px;">
 					<table>
 						<thead>
 							<tr>
-								<th style="width: 230px"><h3>@lang('text.Name')</h3></th>
-								<th style="width: 300px"><h3>{{ $foodMenu->foodName }}</h3></th>
+								<th style="width: 230px"><h3 style="color: white">@lang('text.Name')</h3></th>
+								<th style="width: 300px"><h3 style="color: white">{{ $foodMenu->foodName }}</h3></th>
 							</tr>
 							<tr>
-								<th style="width: 230px"><h3>@lang('text.Price')</h3></th>
-								<th style="width: 300px"><h3>{{ $foodMenu->foodPrice }}</h3></th>
+								<th style="width: 230px"><h3 style="color: white">@lang('text.Price')</h3></th>
+								<th style="width: 300px"><h3 style="color: white">{{ $foodMenu->foodPrice }}</h3></th>
 							</tr>
 							<tr>
 								<th style="width: 230px"><small>@lang('text.Hired on') </small></th>

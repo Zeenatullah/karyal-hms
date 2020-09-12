@@ -8,8 +8,8 @@
 				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">Username</div>
-				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+				<div class="profile-usertitle-name">{{ Auth::user()->name }}</div>
+				<div class="profile-usertitle-status"><span class="indicator label-success"></span> Online</div>
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -45,7 +45,7 @@
     </div>
     {{-- Sidebar End --}}
     {{-- Top section in main --}}
-	<div class="col-sm-9  col-lg-10 {{ App::getLocale() !== "ps" ? 'col-sm-offset-3 col-lg-offset-2' : '' }} main " id="ps_main">
+	<div style="margin-bottom: 100px" class="col-sm-9  col-lg-10 {{ App::getLocale() !== "ps" ? 'col-sm-offset-3 col-lg-offset-2' : '' }} main " id="ps_main">
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#">
@@ -65,32 +65,32 @@
             </div>
 		</div>
         {{-- Top section in main End here --}}
-        <div class="users-frm col-lg-5" style="background-color: #002bff30; border-radius: 10px; padding: 0px 25px;" >
+        <div class="users-frm col-lg-5" style="background-color: #42465cfa; color: white; border-radius: 10px; padding: 0px 25px;" >
             <table>
                 <thead>
                     <tr>
-                        <th style="width: 230px"><h3>@lang('text.ID')</h3></th>
-                        <th style="width: 300px"><h3>{{$rooms->id}}</h3></th>
+                        <th style="width: 230px"><h3 style="color: white;">@lang('text.ID')</h3></th>
+                        <th style="width: 300px"><h3 style="color: white;">{{$rooms->id}}</h3></th>
                     </tr>
                     <tr>
-                        <th><h3>@lang('text.Price')</h3></th>
-                        <th><h3>{{$rooms->price}}</h3></th>
+                        <th><h3 style="color: white;">@lang('text.Price')</h3></th>
+                        <th><h3 style="color: white;">{{$rooms->price}}</h3></th>
                     </tr>
                     <tr>
-                        <th><h3>@lang('text.Wifi')</h3></th>
-                        <th><h3>
+                        <th><h3 style="color: white;">@lang('text.Wifi')</h3></th>
+                        <th><h3 style="color: white;">
                             @if ($rooms->wifi)
-                                <h3>@lang('text.Yes')</h3>
+                                <h3 style="color: white;">@lang('text.Yes')</h3>
                             @else
                                 @lang('text.No')
                             @endif    
                         </h3></th>
                     </tr>
                     <tr>
-                        <th><h3>@lang('text.AC')</h3></th>
-                        <th><h3>
+                        <th><h3 style="color: white;">@lang('text.AC')</h3></th>
+                        <th><h3 style="color: white;">
                             @if ($rooms->ac)
-                                <h3>@lang('text.Yes')</h3>
+                                <h3 style="color: white;">@lang('text.Yes')</h3>
 
                             @else
                                 @lang('text.No')
@@ -98,10 +98,10 @@
                         </h3></th>
                     </tr>
                     <tr>
-                        <th><h3>@lang('text.Television')</h3></th>
-                        <th><h3>
+                        <th><h3 style="color: white;">@lang('text.Television')</h3></th>
+                        <th><h3 style="color: white;">
                             @if ($rooms->tv)
-                                <h3>@lang('text.Yes')</h3>
+                                <h3 style="color: white;">@lang('text.Yes')</h3>
 
                             @else
                                 @lang('text.No')
@@ -109,21 +109,21 @@
                         </h3></th>
                     </tr>
                     <tr>
-                        <th><h3>@lang('text.Taken')</h3></th>
-                        <th><h3>
+                        <th><h3 style="color: white;">@lang('text.Taken')</h3></th>
+                        <th><h3 style="color: white;">
                             @if ($rooms->taken)
-                                <h3>@lang('text.Yes')</h3>
+                                <h3 style="color: white;">@lang('text.Yes')</h3>
                             @else
-                               <h3>@lang('text.No')</h3>
+                               <h3 style="color: white;">@lang('text.No')</h3>
                             @endif
                         </h3></th>
                     </tr>
                     <tr>
-                        <th><h3>@lang('text.NumberOfPeople')</h3></th>
-                        <th><h3>{{$rooms->numberOfPeople}}</h3></th>
+                        <th><h3 style="color: white;">@lang('text.NumberOfPeople')</h3></th>
+                        <th><h3 style="color: white;">{{$rooms->numberOfPeople}}</h3></th>
                     </tr>
                     <tr>
-                        <th><small>@lang('text.Hired on')</small></th>
+                        <th><small>@lang('text.Created at')</small></th>
                         <th><small>{{ $rooms->created_at }}</small></th>
                     </tr>
                 </thead>

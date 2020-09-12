@@ -9,8 +9,8 @@
 						<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
 					</div>
 					<div class="profile-usertitle">
-						<div class="profile-usertitle-name">Username</div>
-						<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+						<div class="profile-usertitle-name">{{ Auth::user()->name }}</div>
+						<div class="profile-usertitle-status"><span class="indicator label-success"></span> Online</div>
 					</div>
 					<div class="clear"></div>
 				</div>
@@ -71,119 +71,120 @@
 						</div>
 					</section>
 				</div>
-				<div class="row">
-					<div class="col-lg-10 col-lg-offset-1"  style="margin-bottom: 10px">
-						<h3>@lang('text.NewFeedback')</h3>
-					</div>
-					<section class="container-fluid users-frm">
-							<table class="table table-striped table-bordered ">
-								<thead>
-									<tr class="d-flex">
-										<th style="width: 2%">@lang('text.Number')</th>
-										<th style="width: 5%">@lang('text.Name')</th>
-										<th style="width: 5%">@lang('text.Last Name')</th>
-										<th style="width: 5%">@lang('text.Email')</th>
-										<th style="width: 5%">@lang('text.Phone number')</th>
-										<th style="width: 8%">@lang('text.Date')</th>
-										<th style="width: 30%">@lang('text.Message')</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php $counter = 1; $showing = 0;?>
-									@if(count($feedbacks) > 0)
-										@foreach ($feedbacks as $feedback)
-											@if ($feedback->show == 1)
-											@php
-												$showing = 1
-											@endphp
-												<tr>
-													<th scope="row">{{ $counter, $counter++}}</th>
-													<td>{{ $feedback->name }}</td>
-													<td>{{ $feedback->lastName }}</td>
-													<td>{{ $feedback->email }} </td>
-													<td>{{ $feedback->phoneNumber }} </td>
-													<td>{{ $feedback->created_at }} </td>
-													<td>{{ $feedback->message }}
-														<br><br>
-														{!! Form::open(['action' => ['ContactController@update', $feedback->id], 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
-															{{Form::submit(__('text.Submit'), ['class' =>'btn btn-info col-md-2'])}}
-															{{Form::hidden('_method', 'PUT')}}
-														{!! Form::close() !!}
-													</td>
-												</tr>
-											@endif
-										@endforeach
-										{{ $feedbacks->links() }}
-									@else
-										<p>@lang('text.TableText')</p>
-									@endif
-								</tbody>
-								<tfoot>
-									@if ($showing == 0)
-										<tr>
-											<td colspan="7">
-												<p class="text-center alert " style="color: white;background-color: #896c00;border-color: #bce8f1;">@lang('text.No new feedback')</p>
-											</td>
+				@if ($count == 0)
+
+				@else
+					<div class="row">
+						<div class="col-lg-10 col-lg-offset-1"  style="margin-bottom: 10px">
+							<h3>@lang('text.NewFeedback')</h3>
+						</div>
+						<section class="container-fluid users-frm">
+								<table class="table table-striped table-bordered ">
+									<thead>
+										<tr class="d-flex">
+											<th style="width: 2%">@lang('text.Number')</th>
+											<th style="width: 5%">@lang('text.Name')</th>
+											<th style="width: 5%">@lang('text.Last Name')</th>
+											<th style="width: 5%">@lang('text.Email')</th>
+											<th style="width: 5%">@lang('text.Phone number')</th>
+											<th style="width: 8%">@lang('text.Date')</th>
+											<th style="width: 30%">@lang('text.Message')</th>
 										</tr>
-									@endif
-								</tfoot>
-							</table>
-					</section>
-					<br>
-				</div>
+									</thead>
+									<tbody>
+										<?php $counter = 1; $showing = 0;?>
+										@if(count($feedbacks) > 0)
+											@foreach ($feedbacks as $feedback)
+												@if ($feedback->show == 1)
+												@php
+													$showing = 1
+												@endphp
+													<tr>
+														<th scope="row">{{ $counter, $counter++}}</th>
+														<td>{{ $feedback->name }}</td>
+														<td>{{ $feedback->lastName }}</td>
+														<td>{{ $feedback->email }} </td>
+														<td>{{ $feedback->phoneNumber }} </td>
+														<td>{{ $feedback->created_at }} </td>
+														<td>{{ $feedback->message }}
+															<br><br>
+															{!! Form::open(['action' => ['ContactController@update', $feedback->id], 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
+																{{Form::submit(__('text.Submit'), ['class' =>'btn btn-info col-md-2'])}}
+																{{Form::hidden('_method', 'PUT')}}
+															{!! Form::close() !!}
+														</td>
+													</tr>
+												@endif
+											@endforeach
+											{{ $feedbacks->links() }}
+										@else
+											{{-- <p>@lang('text.TableText')</p> --}}
+										@endif
+									</tbody>
+									<tfoot>
+										@if ($showing == 0)
+											<tr>
+												<td colspan="7">
+													<p class="text-center alert " style="color: white;background-color: #896c00;border-color: #bce8f1;">@lang('text.No new feedback')</p>
+												</td>
+											</tr>
+										@endif
+									</tfoot>
+								</table>
+						</section>
+						<br>
+					</div>
+				@endif
 				<div class="row">
 					<div class="col-lg-10 col-lg-offset-1"  style="margin-bottom: 10px">
 						<h3>@lang('text.AllFeedback')</h3>
 					</div>
 					<section class="container-fluid users-frm">
-							<table class="table table-striped table-bordered ">
-								<thead>
-									<tr class="d-flex">
-										<th style="width: 2%">@lang('text.Number')</th>
-										<th style="width: 5%">@lang('text.Name')</th>
-										<th style="width: 5%">@lang('text.Last Name')</th>
-										<th style="width: 5%">@lang('text.Email')</th>
-										<th style="width: 5%">@lang('text.Phone number')</th>
-										<th style="width: 8%">@lang('text.Date')</th>
-										<th style="width: 30%">@lang('text.Message')</th>
+						<table class="table table-striped table-bordered">
+							<thead>
+								<tr class="d-flex">
+									<th style="width: 2%">@lang('text.Number')</th>
+									<th style="width: 5%">@lang('text.Name')</th>
+									<th style="width: 5%">@lang('text.Last Name')</th>
+									<th style="width: 5%">@lang('text.Email')</th>
+									<th style="width: 5%">@lang('text.Phone number')</th>
+									<th style="width: 8%">@lang('text.Date')</th>
+									<th style="width: 30%">@lang('text.Message')</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php $counter = 1; $showing = 0;?>
+								@if(count($feedbacks) > 0)
+									@foreach ($feedbacks as $feedback)
+										@if ($feedback->show == 0)
+											@php
+												$showing = 1
+											@endphp
+											<tr>
+												<th scope="row">{{ $counter, $counter++}}</th>
+												<td>{{ $feedback->name }}</td>
+												<td>{{ $feedback->lastName }}</td>
+												<td>{{ $feedback->email }} </td>
+												<td>{{ $feedback->phoneNumber }} </td>
+												<td>{{ $feedback->created_at }} </td>
+												<td>{{ $feedback->message }}</td>
+											</tr>
+										@endif
+									@endforeach
+									{{ $feedbacks->links() }}
+								@endif
+							</tbody>
+							<tfoot>
+								@if ($showing == 0)
+									<tr>
+										<td colspan="7">
+											<p class="text-center alert h3" style="color: white;background-color: #896c00;border-color: #bce8f1;">@lang('text.No feedback')</p>
+										</td>
 									</tr>
-								</thead>
-								<tbody>
-									<?php $counter = 1; $showing = 0;?>
-									@if(count($feedbacks) > 0)
-										@foreach ($feedbacks as $feedback)
-											@if ($feedback->show == 0)
-												@php
-													$showing = 1
-												@endphp
-												<tr>
-													<th scope="row">{{ $counter, $counter++}}</th>
-													<td>{{ $feedback->name }}</td>
-													<td>{{ $feedback->lastName }}</td>
-													<td>{{ $feedback->email }} </td>
-													<td>{{ $feedback->phoneNumber }} </td>
-													<td>{{ $feedback->created_at }} </td>
-													<td>{{ $feedback->message }}</td>
-												</tr>
-											@endif
-										@endforeach
-										{{ $feedbacks->links() }}
-									@else
-										<p>@lang('text.TableText')</p>
-									@endif
-								</tbody>
-								<tfoot>
-									@if ($showing == 0)
-										<tr>
-											<td colspan="7">
-												<p class="text-center alert " style="color: white;background-color: #896c00;border-color: #bce8f1;">@lang('text.No feedback')</p>
-											</td>
-										</tr>
-									@endif
-								</tfoot>
-							</table>
-					</section>
-					<br>
+								@endif
+							</tfoot>
+						</table>
+					</section><br>
 				</div>
 			</div>
 		</div>

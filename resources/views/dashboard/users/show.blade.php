@@ -8,8 +8,8 @@
 				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">Username</div>
-				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+				<div class="profile-usertitle-name">{{ Auth::user()->name }}</div>
+				<div class="profile-usertitle-status"><span class="indicator label-success"></span> Online</div>
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -60,15 +60,16 @@
 		</div>
 
     	<br><br>
-		<div class="container col-lg-10 col-lg-offset-1 bg-primary users-frm" style="background-color: #aabbde; border-radius: 10px; padding: 15px">
+		<div class="container col-lg-10 col-lg-offset-1 bg-primary users-frm" style="background-color: #42465cfa; color: white; border-radius: 10px; padding: 15px">
 			<div class="row">
+				<div class="col-lg-1"></div>
 				<div class="col-lg-10">
-					<h3>@lang('text.UserInfoText')</h3>
+					<h3  style="color: white">@lang('text.UserInfoText')</h3>
 				</div>
-				<div class="col-lg-10 col-sm-12 col-lg-offset-1">
-					<h3>@lang('text.Name'): {{$post->name}}</h3>   
-					<h3>@lang('text.Email'): {{$post->email}}</h3>   
-					<h3>@lang('text.Position'): {{$post->user_type}}</h3>   
+				<div class="col-lg-10 col-sm-12 col-lg-offset-1" >
+					<h3 style="color: white">@lang('text.Name'): {{$post->name}}</h3>   
+					<h3 style="color: white">@lang('text.Email'): {{$post->email}}</h3>   
+					<h3 style="color: white">@lang('text.Position'): {{$post->user_type}}</h3>   
 					<small>@lang('text.Hired on'): {{ $post->created_at }} </small>
 				</div>
 			</div>

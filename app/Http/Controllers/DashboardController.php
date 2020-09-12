@@ -10,6 +10,7 @@ use App\Room;
 use App\FoodMenu;
 use App\Contact;
 use App\RoomBooking;
+use App\Customer;
 use App\Food;
 
 
@@ -22,19 +23,35 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $totalFees = 0;
+        $totalRegisteredCustomers = Customer::all()->count();
+        $totalBills = Food::all()->count();
+        $totalBookedRooms = RoomBooking::all()->count();
+        $freeRooms = Room::where('taken', 0)->count();
+        $totalRooms = Room::all()->count();
+        
+        
+        $totalCustomers = Room::where('taken', 1)->get();
+        $ُtotalBookedRooms = RoomBooking::all();
+        $totalOrderedFoods = Food::all();
+        
+        
+        $sumOfCustomers    = 0;
+        $totalRoomsPayment = 0;
+        $totalFoodsPayment = 0; 
+        
+        foreach ($totalCustomers as $customer ) {   $sumOfCustomers += $customer->numberOfPeople;  }
+        foreach ($ُtotalBookedRooms as $rooms ) { $totalRoomsPayment += $rooms->payment; }
+        foreach ($totalOrderedFoods as $bill) { $totalFoodsPayment += $bill->totalPrice; }
 
-        $employees = Employee::all()->count();
-        $users = User::all()->count();
-        $feedback = Contact::all()->count();
-        $rooms = Room::all()->count();
-        $fees = RoomBooking::all();
-        foreach ($fees as $fee ) {
-            $totalFees += $fee->payment;
-        }
-        // return $totalFees;
-        return view('dashboard.index')->with('employees', $employees)->with('users', $users)->with('feedback', $feedback)
-                                      ->with('rooms', $rooms)->with('totalFees', $totalFees);
+        return view('dashboard.reports.grand')->with('totalRegisteredCustomers', $totalRegisteredCustomers)
+                                              ->with('totalBills', $totalBills)
+                                              ->with('totalBookedRooms', $totalBookedRooms)
+                                              ->with('freeRooms', $freeRooms)
+                                              ->with('totalRooms', $totalRooms)
+                                              ->with('sumOfCustomers', $sumOfCustomers)
+                                              ->with('totalRoomsPayment', $totalRoomsPayment)
+                                              ->with('totalFoodsPayment', $totalFoodsPayment);
+
     }
 
     /**
@@ -68,9 +85,10 @@ class DashboardController extends Controller
     public function feedbacks()
     {
         // $feedback = Contact::all();
+        $count = Contact::all()->count();
         $feedbacks = Contact::paginate('10');
-        // return $feedback;
-        return view('dashboard.feedback.index')->with('feedbacks', $feedbacks);
+        // return $count;
+        return view('dashboard.feedback.index')->with('feedbacks', $feedbacks)-> with('count', $count);
     }
 
 

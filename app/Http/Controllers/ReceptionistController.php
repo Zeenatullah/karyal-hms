@@ -43,7 +43,17 @@ class ReceptionistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->user_type = $request->input('user_type');
+        $user->email = $request->input('email');          
+        $user->password = Hash::make($request->input('password'));
+
+        
+        $user->save();
+
+        return redirect('/dboard/users')->with('success', 'Room added successfully');
     }
 
     /**

@@ -8,8 +8,8 @@
 				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">Username</div>
-				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+				<div class="profile-usertitle-name">{{ Auth::user()->name }}</div>
+				<div class="profile-usertitle-status"><span class="indicator label-success"></span> Online</div>
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -43,7 +43,7 @@
 			</li>
 		</ul>
 	</div>
-	<div class="col-sm-9 col-lg-10 {{ App::getLocale() !== "ps" ? 'col-sm-offset-3 col-lg-offset-2' : '' }} main" id="ps_main">
+	<div style="margin-bottom: 100px" class="col-sm-9 col-lg-10 {{ App::getLocale() !== "ps" ? 'col-sm-offset-3 col-lg-offset-2' : '' }} main" id="ps_main">
 
         <div class="row">
             <h1 class="col-lg-12">@lang('text.HeadTextRoom')</h1>   
@@ -53,50 +53,50 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <br>
-                            <div class="row" style="border-radius: 10px; background-color: #002bff30; padding: 0px 20px">
+                            <div class="row" style="border-radius: 10px; background-color: #42465cfa; color: white; padding: 0px 20px">
                                 <div class=" col-sm-1  col-lg-12 ">
 
-                                    <h3>@lang('text.PreviousValues')</h3>
+                                    <h3 style="color: white">@lang('text.PreviousValues')</h3>
                                     <div class="row col-lg-offset-1">
                                         <div class="col-lg-1 col-sm-1"></div>
                                         <div class="">
-                                            <h5>@lang('text.Rooms') @lang('text.ID'): {{$rooms->id}}</h5>
+                                            <div class="h4">@lang('text.Rooms') @lang('text.ID'): {{$rooms->id}}</div>
                                         </div>
                                         <div class="col-lg-1 col-sm-1"></div>
                                         
                                         {{-- Wifi --}}
                                         <div class="col-md-2 col-sm-2">
                                             @if ($rooms->wifi)
-                                                <h5>@lang('text.Wifi'): @lang('text.Yes')</h5>
+                                                <div class="h4">@lang('text.Wifi'): @lang('text.Yes')</div>
                                             @else
-                                                <h5>@lang('text.Wifi'): @lang('text.No')</h5>
+                                                <div class="h4">@lang('text.Wifi'): @lang('text.No')</div>
                                             @endif
                                         </div>
                                         
                                       {{-- AC --}}
                                         <div class="col-md-2 col-sm-2">
                                             @if ($rooms->ac)
-                                                <h5>@lang('text.AC'): @lang('text.Yes')</h5>
+                                                <div class="h4">@lang('text.AC'): @lang('text.Yes')</div>
                                             @else
-                                                <h5>@lang('text.AC'): @lang('text.No')</h5>
+                                                <div class="h4">@lang('text.AC'): @lang('text.No')</div>
                                             @endif
                                         </div>
                                         
                                         {{-- TV --}}
                                         <div class="col-md-2 col-sm-2">
                                             @if ($rooms->tv)
-                                                <h5>@lang('text.Television'): @lang('text.Yes')</h5>
+                                                <div class="h4">@lang('text.Television'): @lang('text.Yes')</div>
                                             @else
-                                                <h5>@lang('text.Television'): @lang('text.No')</h5>
+                                                <div class="h4">@lang('text.Television'): @lang('text.No')</div>
                                             @endif
                                         </div>
     
                                         {{-- Taken --}}
                                         <div class="col-md-2 col-sm-2">
                                             @if ($rooms->taken)
-                                                <h5>@lang('text.Taken'): @lang('text.Yes')</h5>
+                                                {{-- <div class="h4">@lang('text.Taken'): @lang('text.Yes')</div> --}}
                                             @else
-                                                <h5>@lang('text.Taken'): @lang('text.No')</h5>
+                                                <div class="h4">@lang('text.Taken'): @lang('text.No')</div>
                                             @endif
                                         
                                         </div>
@@ -105,10 +105,10 @@
                                 </div>
                             </div> 
                             <br><br>
-                            <div class="row" style="border-radius: 10px; background-color: #002bff30;">   
+                            <div class="row" style="border-radius: 10px; background-color: #42465cfa; color: white;">   
                                 <div class="row">
                                     <div style="margin: 0px 60px">
-                                        <h3>@lang('text.UpdateInfo')</h3>
+                                        <h3 style="color: white">@lang('text.UpdateInfo')</h3>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -151,11 +151,14 @@
                                                     <label for="taken">@lang('text.Taken')</label>
                                                     <div class="col-lg-offset-1">
                                                         @lang('text.Yes'): &nbsp;{{ Form::radio('taken', '1')}}
+                                                        <span class="col-lg-offset-1"></span>
                                                         @lang('text.No'): &nbsp;{{ Form::radio('taken', '0')}}
                                                     </div>
                                                 </div>
                                             </div>
                                             <br>
+                                            <hr>
+
                                             <div class="row">
                                                 <div style="padding-top: 40px;" class="col-lg-2">{{Form::file('file[]', ['multiple'])}}</div>
                                                 <div class="form-group col-lg-3 col-lg-offset-1" >

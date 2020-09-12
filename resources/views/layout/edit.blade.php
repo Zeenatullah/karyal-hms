@@ -17,24 +17,40 @@
 			<link rel="stylesheet" type="text/css" href="../../marimar/styles/contact.css">
 			<link rel="stylesheet" type="text/css" href="../../marimar/styles/contact_responsive.css">
 			<link href="../../../dashboard/css/lang.css" rel="stylesheet">
+			@if(app()->getLocale() == 'ps')
+				<style>
+					* {
+						font-family: 'bahij-regular';
+					}
+						h1, h2, h3, h4, h5, p, a, ul, li {
+						font-family: bahij-regular;
+					}
+					#ps_margin {
+						margin-right: 50px;
+					}
+				</style>
+			@endif
 		</head>
 		<body class="{{ app()->getLocale() === 'ps' ? 'dir-rtl' : '' }}">
 			<div class="super_container">
 				<!-- Header -->
-				<header class="header">
+				<header class="header users-frm text-align">
 					<div class="header_content d-flex flex-column align-items-center justify-content-lg-end justify-content-center">
 						
 						<!-- Main Nav -->
 						<nav class="main_nav">
 							<ul class="d-flex flex-row align-items-center justify-content-start">
 								@yield('menuBar')
-								{{-- <li class="active"><a href="service">@lang('text.Home')</a></li>
-								<li><a href="customer">@lang('text.RegisterCustomer')</a></li>
-								<li><a href="roombooking">@lang('text.BookRoom')</a></li>
-								<li><a href="food">@lang('text.Foods')</a></li> --}}
 							</ul>
 						</nav>
 	
+						<!-- Social -->
+						<div class="social header_social" >
+							<ul class="d-flex flex-row align-items-center justify-content-start">
+								<li class="bg-dark"><a href="#" data-lang="en" class="text-white"><b>EN</b></a></li>
+								<li class="bg-dark"><a href="#" data-lang="ps" class="text-white"><b>PS</a></b></li>
+							</ul>
+						</div>
 						<!-- Header Right -->
 						<div class="header_right d-flex flex-row align-items-center justify-content-start">
 	
@@ -113,7 +129,6 @@
 						</nav>
 					</div>
 				</div>
-
 				@yield('contents')
 			</div>
 			<script src="../../marimar/js/jquery-3.3.1.min.js"></script>
@@ -130,5 +145,6 @@
 			<script src="../../marimar/plugins/parallax-js-master/parallax.min.js"></script>
 			<script src="../../marimar/plugins/jquery-datepicker/jquery-ui.js"></script>
 			<script src="../../marimar/js/custom.js"></script>
+			<script src="../../js/lang.js"></script>
 		</body>
 </html>

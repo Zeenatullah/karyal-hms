@@ -4,10 +4,10 @@
 		<h1 class="col-lg-5" style="margin: 0 30px">@lang('text.Daily Report')</h1>
 	</div>
 	<br>
-	<a href="/dboard/daily" class="h3 btn btn-danger m-4">Daily</a> 
-	<a href="/dboard/weekly" class="h3 btn btn-primary m-4">Weekly</a> 
-	<a href="/dboard/monthly" class="h3 btn btn-primary m-4">Monthly</a> 
-	<a href="/dboard/grand" class="h3 btn btn-primary m-4">Grand</a> 
+	<a href="/dboard/daily" class="h3 btn btn-danger m-4" style="margin: 5px">Daily</a> 
+	<a href="/dboard/weekly" class="h3 btn btn-primary m-4" style="margin: 5px">Weekly</a> 
+	<a href="/dboard/monthly" class="h3 btn btn-primary m-4" style="margin: 5px">Monthly</a> 
+	<a href="/dboard/grand" class="h3 btn btn-primary m-4" style="margin: 5px">Grand</a> 
 
 @endsection
 @section('contents')

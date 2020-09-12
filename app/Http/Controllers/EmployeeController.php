@@ -43,7 +43,7 @@ class EmployeeController extends Controller
             'phoneNo' => 'required',
             'salary' => 'required',
             'employee_type' => 'required',
-            // 'tazkira' => 'image|nullable|max:10000'
+            'tazkira' => 'image|nullable|max:10000'
         ]);
 
 
@@ -115,7 +115,10 @@ class EmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
+
     {
+        // return $request->input('name');
+        // return $request->input('tazkira');
         $this->validate($request, [
             'name' => 'required',
             'lastName' => 'required',
@@ -127,7 +130,7 @@ class EmployeeController extends Controller
 
 
         if($request->hasFile('tazkira')){
-
+            // return 'success';
             // Get file name with extension
             $fileWithExt = $request->file('tazkira')->getClientOriginalName();
             
@@ -141,7 +144,9 @@ class EmployeeController extends Controller
             $filenameToStore = $filename.'_'.time().'.'.$extension;
 
             // Store file
-            $path = $request->file('tazkira')->storeAs('public/tazkiras', $filenameToStore);
+            $path = $request->file('tazkira')->storeAs('public/employee_Tazkira', $filenameToStore);
+
+            // return "yes";
         }else{
             $filenameToStore = 'no_image.jpeg';
         }

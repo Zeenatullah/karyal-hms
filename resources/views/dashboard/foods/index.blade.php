@@ -8,8 +8,8 @@
 				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">Username</div>
-				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+				<div class="profile-usertitle-name">{{ Auth::user()->name }}</div>
+				<div class="profile-usertitle-status"><span class="indicator label-success"></span> Online</div>
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -55,41 +55,39 @@
 			</ol>
 		</div>
 		<div class="row">
-			<div class="col-lg-10">
+			<div class="col-lg-1"></div>
+			<div class="col-lg-12">
 				<h1 class="page-header">@lang('text.Food Menu')</h1>
 			</div>
 		</div>
 
 		<!-- Contact Section Begin -->
-		<div class="row users-frm col-lg-10 col-lg-offset-1" style="border-radius: 50px;background-color: #002bff30; padding-bottom: 20px">
+		<div class="row users-frm col-lg-10 col-lg-offset-1" style="border-radius: 50px;background-color: #42465cfa; color: white; padding-bottom: 20px">
 			<div class="col-lg-2"></div>
 			<div class="col-lg-7">
-				<h3>@lang('text.HeadText')</h3>
+				<h3 style="color:white;">@lang('text.HeadText')</h3>
 				{!! Form::open(['action' => 'FoodmenuController@store', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
 					<br>
+					<label style="margin: 10 20px" for="food_drink">@lang('text.SelectOne')</label>
 					<div class="row">
-						<div class="dropdown col-lg-12 input-group">
-							<select class="btn btn-secondary dropdown-toggle col-lg-12" name="food_drink" required>
-									<div class="dropdown-menu col-lg-12" aria-labelledby="dropdownMenuButton">
-										<option selected disabled >@lang('text.Choose one')</option>
-										<a class="dropdown-item" href="#">
-											<option value="Drinkings">@lang('text.Drinkings')</option>
-											<option value="Food">@lang('text.Foods')</option>
-										</a>
-									</div>
+						<div class="form-group col-lg-12">
+							<select class="form-control" name="food_drink" required id="food_drink" style="height: 45px">
+									<option selected disabled >@lang('text.Choose one')</option>
+									<option value="Drinkings">@lang('text.Drinkings')</option>
+									<option value="Food">@lang('text.Foods')</option>
 							</select>
 						</div>
 					</div>
 					<br>
 					<div class="row">
-						<div class="form-group col-lg-5">
-							<label for="foodName">@lang('text.Name')</label>
+						<div class="form-input col-lg-5">
+							<label style="margin: 10px" for="foodName">@lang('text.Name')</label>
 							<input type="text" name="foodName" class="form-control" placeholder="@lang('text.Name')" id="foodName">
 						</div>
-						<div class="form-group col-lg-2"></div>
-						<div class="form-group col-lg-5">
-							<label for="foodPrice">@lang('text.Price')</label>
-							<input type="text" name="foodPrice" class="form-control" placeholder="@lang('text.Price')" id="foodPrice" style="width: 238px">
+						<div class="form-input col-lg-2"></div>
+						<div class="form-input col-lg-5">
+							<label style="margin: 10px" for="foodPrice">@lang('text.Price')</label>
+							<input type="text" name="foodPrice" class="form-control" placeholder="@lang('text.Price')" id="foodPrice">
 						</div>
 					</div>
 					<br>
@@ -144,7 +142,6 @@
 			</section>
 			<br>
 		</div>
-		
 		{{-- Footer Section --}}
 	</div>	
 @endsection

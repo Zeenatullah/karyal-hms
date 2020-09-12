@@ -1,13 +1,13 @@
 @extends('dashboard.inc.report')
 @section('daily')
 	<div class="row">
-		<h1 class="col-lg-5" style="margin: 0 30px">@lang('text.Daily Report')</h1>
+		<h1 class="col-lg-5" style="margin: 0 30px">@lang('text.Monthly Report')</h1>
 	</div>
 	<br>
-	<a href="/dboard/daily" class="h3 btn btn-danger m-4">Daily</a> 
-	<a href="/dboard/weekly" class="h3 btn btn-primary m-4">Weekly</a> 
-	<a href="/dboard/monthly" class="h3 btn btn-primary m-4">Monthly</a> 
-	<a href="/dboard/grand" class="h3 btn btn-primary m-4">Grand</a> 
+	<a href="/dboard/daily" class="h3 btn btn-primary m-4" style="margin: 5px">Daily</a> 
+	<a href="/dboard/weekly" class="h3 btn btn-primary m-4" style="margin: 5px">Weekly</a> 
+	<a href="/dboard/monthly" class="h3 btn btn-danger m-4" style="margin: 5px">Monthly</a> 
+	<a href="/dboard/grand" class="h3 btn btn-primary m-4" style="margin: 5px">Grand</a> 
 
 @endsection
 @section('contents')
@@ -16,7 +16,7 @@
 			<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 				<div class="panel panel-red panel-widget ">
 					<div class="row no-padding"><em class="fa fa-xl fa-calendar color-red"></em>
-						<div class="large">{{ $todayBills }}</div>
+						<div class="large">{{ $thisMonthBills }}</div>
 						<div>@lang('text.Bills')</div>
 					</div>
 				</div>
@@ -24,7 +24,7 @@
 			<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 				<div class="panel panel-blue panel-widget border-right">
 					<div class="row no-padding"><em class="fa fa-xl fa-dollar color-orange"></em>
-					<div class="large">{{ $todayFoodsPayment }}</div>
+					<div class="large">{{ $thisMonthFoodsPayment }}</div>
 						<div>@lang('text.Bills payment')</div>
 					</div>
 				</div>
@@ -32,7 +32,7 @@
 			<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
 				<div class="panel panel-blue panel-widget border-right">
 					<div class="row no-padding"><em class="fa fa-xl fa-dollar color-orange"></em>
-					<div class="large">{{ $todayRoomsPayment }}</div>
+					<div class="large">{{ $thisMonthRoomsPayment }}</div>
 						<div>@lang('text.Rooms payment')</div>
 					</div>
 				</div>
@@ -80,7 +80,7 @@
 			<div class="panel panel-default">
 				<div class="panel-body easypiechart-panel">
 					<h4>@lang('text.Booked rooms')</h4>
-					<div class="easypiechart" id="easypiechart-orange" data-percent="{{ $todayBookedRooms }}" ><span class="percent">{{ $todayBookedRooms }}</span></div>
+					<div class="easypiechart" id="easypiechart-orange" data-percent="{{ $thisMonthBookedRooms }}" ><span class="percent">{{ $thisMonthBookedRooms }}</span></div>
 				</div>
 			</div>
 		</div>
@@ -96,7 +96,7 @@
 			<div class="panel panel-default">
 				<div class="panel-body easypiechart-panel">
 					<h4>@lang('text.Registered Customers')</h4>
-					<div class="easypiechart" id="easypiechart-teal" data-percent="{{ $todayRegisteredCustomers }}" ><span class="percent">{{ $todayRegisteredCustomers }}</span></div>
+					<div class="easypiechart" id="easypiechart-teal" data-percent="{{ $thisMonthRegisteredCustomers }}" ><span class="percent">{{ $thisMonthRegisteredCustomers }}</span></div>
 				</div>
 			</div>
 		</div>

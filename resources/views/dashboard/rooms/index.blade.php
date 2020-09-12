@@ -8,8 +8,8 @@
 				<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
 			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name">Username</div>
-				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+				<div class="profile-usertitle-name">{{ Auth::user()->name }}</div>
+				<div class="profile-usertitle-status"><span class="indicator label-success"></span> Online</div>
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -61,86 +61,81 @@
 			</div>
 		</div>
 	
-		<div class="row users-frm col-lg-10 col-lg-offset-1" style="border-radius: 20px;background-color: #002bff30;">
-			<section class="container row">
-				<div class="col-lg-10">
-					<h3>@lang('text.AdminRoomText')</h3>
+		<div class="row users-frm col-lg-10 col-lg-offset-1" style="border-radius: 20px;background-color: #42465cfa; color: white">
+			<section class="row">
+				<div class="col-lg-12">
+					<div class="col-lg-1"></div>
+					<h3 style="color: white">@lang('text.AdminRoomText')</h3>
 					<hr>
 				</div>
-				<div class="col-lg-10" style="padding-left: ;">
+				<div class="col-lg-10">
 					{!! Form::open(['action' => 'RoomsController@store', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
-						<div class="row">
+						<br>
+						<div class="row ">
+							<div class="col-lg-2"></div>
 							<div class="col-lg-4" >
-								<Label for="wifi">@lang('text.Wifi')</Label>
-								<div class="row">
-									<div class="col-lg-2"></div>
-									<div>
-										@lang('text.Yes'): &nbsp;{{ Form::radio('wifi', '1')}}
-										<span style="margin: 15px"></span>
-										@lang('text.No'): &nbsp;{{ Form::radio('wifi', '0')}}
-									</div>
+								<label for="wifi">@lang('text.Wifi')</label>
+								<div class="col-lg-offset-1">
+									@lang('text.Yes'): &nbsp;{{ Form::radio('wifi', '1')}}
+									<span class="col-lg-offset-1"></span>
+									@lang('text.No'): &nbsp;{{ Form::radio('wifi', '0')}}
 								</div>
 							</div>
-							<div class="form-group col-lg-3"></div>
+							<div class="col-lg-2"></div>
 							<div class="form-group col-lg-4" >
-								<Label for="ac">@lang('text.AC')</Label>
-								<div class="row">
-									<div class="col-lg-2"></div>
-									<div>
-										@lang('text.Yes'): &nbsp;{{ Form::radio('ac', '1')}}
-										<span style="margin: 15px"></span>
-										@lang('text.No'): &nbsp;{{ Form::radio('ac', '0') }}
-									</div>
+								<label for="a/c">@lang('text.AC')</label>
+								<div class="col-lg-offset-1">
+									@lang('text.Yes'): &nbsp;{{ Form::radio('ac', '1')}}
+									<span class="col-lg-offset-1"></span>
+									@lang('text.No'): &nbsp;{{ Form::radio('ac', '0')}}
 								</div>
 							</div>
 						</div>
 						<hr>
 						
 						<div class="row">
+							<div class="col-lg-2"></div>
 							<div class="form-group col-lg-4" >
-								<Label for="wifi">@lang('text.Television')</Label>
-								<div class="row">
-									<div class="col-lg-2"></div>
-									<div>
-										@lang('text.Yes'):&nbsp;{{ Form::radio('tv', '1')}}
-										<span style="margin: 15px"></span>
-										@lang('text.No'): &nbsp;{{ Form::radio('tv', '0')}}
-									</div>
+								<label for="tv">@lang('text.Television')</label>
+								<div class="col-lg-offset-1">
+									@lang('text.Yes'): &nbsp;{{ Form::radio('tv', '1')}}
+									<span class="col-lg-offset-1"></span>
+									@lang('text.No'): &nbsp;{{ Form::radio('tv', '0')}}
 								</div>
 							</div>
-							<div class="form-group col-lg-3"></div>
+							<div class="col-lg-2"></div>
 							<div class="form-group col-lg-4" >
-								<Label for="wifi">@lang('text.Taken')</Label>
-								<div class="row">
-									<div class="col-lg-2"></div>
-									<div>
-										@lang('text.Yes'): &nbsp;{{ Form::radio('taken', '1')}}
-										<span style="margin: 15px"></span>
-										@lang('text.No'): &nbsp;{{ Form::radio('taken', '0')}}
-									</div>
+								<label for="taken">@lang('text.Taken')</label>
+								<div class="col-lg-offset-1">
+									@lang('text.Yes'): &nbsp;{{ Form::radio('taken', '1')}}
+									<span class="col-lg-offset-1"></span>
+									@lang('text.No'): &nbsp;{{ Form::radio('taken', '0')}}
 								</div>
 							</div>
 						</div>
-						<br><br><br><br>
+						<hr>
+
+						<br>
 						<div class="row">
-							<div class="form-group col-md-4" >
+							<div class="col-lg-2"></div>
+							<div style="padding-top: 40px;" class="col-lg-2">{{Form::file('file[]', ['multiple'])}}</div>
+							<div class="form-group col-lg-3 col-lg-offset-1" >
 								<label for="price">@lang('text.Price')</label>
 								{{ Form::text('price', '', ['class' => 'form-control', 'placeholder' =>'$'])}}
 							</div>
 							<div class="form-group col-lg-1"></div>
-							<div class="form-group col-lg-4 col-md-4" >
+							<div class="form-group col-lg-3" >
 								<label for="numberOfPeople">@lang('text.NumberOfPeople')</label>
-								<input type="number" class="form-control" id='numberOfPeople' name="numberOfPeople">
-								{{-- {{ Form::number('numberOfPeople', '', ['class' => 'form-control' , 'placeholder' =>, 'max'=>'6'])}} --}}
+								{{ Form::number('numberOfPeople', '', ['class' => 'form-control' , 'placeholder' =>'Number of people', 'max'=>'6'])}}
 							</div>
 						</div>
 						<br>
-						<div class="form-group">
-							{{Form::file('file[]', ['multiple'])}}
+						<br>
+						<div class="row">
+							<div class="col-lg-1"></div>
+								{{Form::submit(__('text.Submit'), ['class' =>'btn btn-info col-md-2'])}}
+							<div class="col-md-4"></div>
 						</div>
-						<span style=" margin-right: 55px" >
-							<input type="submit" class="btn btn-primary col-lg-2 pull-right" name="Submite" value="@lang('text.Submit')">
-						</span>
 					{!! Form::close() !!}  
 				</div>
 			</section>
@@ -161,9 +156,10 @@
 								</tr>
 							</thead>
 							<tbody>
+								@php $counter = 1; @endphp
 									@foreach ($rooms as $room)
 										<tr>
-											<th scope="row">{{$room->id}}</th>
+											<th scope="row">{{ $counter++ }}</th>
 											<td>{{ $room->price }} </td>
 											<td>{{ $room->numberOfPeople }} </td>
 											<td>{{ $room->created_at }} </td>

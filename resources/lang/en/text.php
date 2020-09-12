@@ -16,6 +16,7 @@ return [
     'Our address' => 'Kandahar University, Afghanistan',
     'Address' => 'Address',
     'Social Media' => 'Social Media',
+    'invalidField' => 'Fill in the blank',
 
 
     // User registration Register Part
@@ -32,6 +33,11 @@ return [
     // ----------
     'Number' => 'NO',
     'Name' => 'Name',
+    'Moderator' => 'Moderator',
+    'Receptionist' => 'Receptionist',
+    'Cleaner' => 'Cleaner',
+    'Cook' => 'Cook',
+    'Food transporter' => 'Food transporter',
     'Last Name' => 'Last Name',
     'Position' => 'Position',
     'Salary' => 'Salary',

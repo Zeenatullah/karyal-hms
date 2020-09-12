@@ -105,7 +105,6 @@ class RoomsController extends Controller
         public function edit($id)
         {
             $rooms = Room::find($id);
-            // return $rooms;
             return view('dashboard.rooms.edit')->with('rooms', $rooms);
         }
 
@@ -121,12 +120,10 @@ class RoomsController extends Controller
         
         $this->validate($request, [
             'wifi' => 'required',
-            // 'a/c' => 'required',
             'tv' => 'required',
             'taken' => 'required',
             'price' => 'required',
             'numberOfPeople' => 'required',
-            // 'room_images' => 'image|nullable|max:10000'
         ]);
         
         $room = Room::find($id);
@@ -138,10 +135,8 @@ class RoomsController extends Controller
 
                 $fileWithExt = $file->getClientOriginalName();
                 
-                // Get just filename
                 $filename = pathinfo($fileWithExt, PATHINFO_FILENAME);
 
-                // return $filename;
                 // Get file ext 
                 $extension = $file->getClientOriginalExtension();
                 
