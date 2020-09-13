@@ -78,7 +78,7 @@
                         <div class="ri-text" style="height: 500px">
                             <div class="hero-slider owl-carousel" >
                                 @foreach ($images as $image)
-                                <div class="hs-item set-bg" data-setbg="/storage/room_images/{{$image->imageName}}"></div>
+                                <div class="hs-item set-bg" data-setbg="{{Storage::disk('s3')->url($image->imageName)}}"></div>
                                 @endforeach
                             </div>
                         </div>

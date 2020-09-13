@@ -44,7 +44,7 @@ class WebsiteController extends Controller
     {
         $rooms = Room::find($id);
         $roomImages = RoomImages::where('roomId', $id)->get();
-        return view('website.roomImages')->with('rooms', $rooms)->with('images', $roomImages);
+        return view('website.roomimages')->with('rooms', $rooms)->with('images', $roomImages);
     }
 
    
