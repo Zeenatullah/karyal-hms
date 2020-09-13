@@ -55,7 +55,7 @@
                 @foreach ($foodMenu as $item)
                     <div class="col-lg-4 col-md-6">
                         <div class="room-item">
-                            <img src="/storage/food_images/{{$item->foodImage}}" style="width: 500px; height: 375px">
+                            <img src="{{Storage::disk('s3')->url($item->foodImage)}}" style="width: 500px; height: 375px">
                             <div class="ri-text">
                                 <h4>
                                     @php

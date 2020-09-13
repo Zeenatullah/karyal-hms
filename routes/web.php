@@ -13,6 +13,13 @@
 
 // Papertrail password: Afghan!23
 
+// The following routes are just for testing our AWS S3
+Route::prefix('s3')->group(function () {
+    Route::get('/', 'S3TestController@index');
+    Route::post('/', 'S3TestController@store');
+    Route::get('/{image}', 'S3TestController@show');
+});
+
 // Webstite
 // |--------------------------------------------------------------------------
 

@@ -113,7 +113,7 @@
 					</div>
 				</div>
 				<div class="col-lg-7 col-lg-offset-1">
-					<img src="/storage/employee_tazkira/{{$employees->tazkira}}" width="100%">
+					<img src="{{Storage::disk('s3')->url($employees->tazkira)}}" width="100%">
 				</div>
 			</div>
 		</div>

@@ -39,21 +39,8 @@ class CustomerController extends Controller
     {
         // return $request->input('province');
         if($request->hasFile('tazkira')){
-
-            // Get file name with extension
-            $fileWithExt = $request->file('tazkira')->getClientOriginalName();
-            
-            // Get just filename
-            $filename = pathinfo($fileWithExt, PATHINFO_FILENAME);
-
-            // Get file ext 
-            $extension = $request->file('tazkira')->getClientOriginalExtension();
-
-            // File name to store
-            $filenameToStore = $filename.'_'.time().'.'.$extension;
-
             // Store file
-            $path = $request->file('tazkira')->storeAs('public/Customer_tazkira', $filenameToStore);
+            $filenameToStore = $request->file('tazkira')->store('public/Customer_tazkira', 's3');
         }else{
             $filenameToStore = 'no_image.jpeg';
         }
@@ -105,21 +92,8 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         if($request->hasFile('tazkira')){
-
-            // Get file name with extension
-            $fileWithExt = $request->file('tazkira')->getClientOriginalName();
-            
-            // Get just filename
-            $filename = pathinfo($fileWithExt, PATHINFO_FILENAME);
-
-            // Get file ext 
-            $extension = $request->file('tazkira')->getClientOriginalExtension();
-
-            // File name to store
-            $filenameToStore = $filename.'_'.time().'.'.$extension;
-
             // Store file
-            $path = $request->file('tazkira')->storeAs('public/Customer_tazkira', $filenameToStore);
+            $filenameToStore = $request->file('tazkira')->store('public/Customer_tazkira', 's3');
         }else{
             $filenameToStore = 'no_image.jpeg';
         }

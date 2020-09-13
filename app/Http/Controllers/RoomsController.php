@@ -53,20 +53,9 @@ class RoomsController extends Controller
         if($request->hasFile('file')){
             foreach($request->file('file') as $file){
                 $roomImage = new RoomImages();
-                $fileWithExt = $file->getClientOriginalName();
-                
-                // Get just filename
-                $filename = pathinfo($fileWithExt, PATHINFO_FILENAME);
 
-                // return $filename;
-                // Get file ext 
-                $extension = $file->getClientOriginalExtension();
-                
-                // File name to store
-                $filenameToStore = $filename.'_'.time().'.'.$extension;
-                
                 // Store file
-                $path = $file->storeAs('public/room_images', $filenameToStore);
+                $filenameToStore = $file->store('public/room_images', 's3');
                 
                 // return $filenameToStore;
                 $roomImage->roomId = $room->id;
@@ -132,19 +121,9 @@ class RoomsController extends Controller
         if($request->hasFile('file')){
             foreach($request->file('file') as $file){
                 $roomImage = new RoomImages();
-
-                $fileWithExt = $file->getClientOriginalName();
-                
-                $filename = pathinfo($fileWithExt, PATHINFO_FILENAME);
-
-                // Get file ext 
-                $extension = $file->getClientOriginalExtension();
-                
-                // File name to store
-                $filenameToStore = $filename.'_'.time().'.'.$extension;
                 
                 // Store file
-                $path = $file->storeAs('public/room_images', $filenameToStore);
+                $filenameToStore = $file->store('public/room_images', 's3');
                 
                 // return $filenameToStore;
                 $roomImage->roomId = $room->id;

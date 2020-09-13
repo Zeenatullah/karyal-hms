@@ -57,12 +57,12 @@
                                 <div class="room-slider owl-carousel" style="direction: ltr">
     
                                     @foreach (\App\RoomImages::where('roomId', $room->id)->get() as $image)
-                                        <div class="hs-item set-bg" data-setbg="/storage/room_images/{{$image->imageName}}"></div>
+                                        <div class="hs-item set-bg" data-setbg="{{Storage::disk('s3')->url($image->imageName)}}"></div>
                                     @endforeach
                                     
                                 </div>
                             </div>
-                            {{-- <img src="/storage/room_images/{{ $imagesArray[$room->id -1] }}" alt="Room images" width="100%"> --}}
+                            {{-- <img src="{{Storage::disk('s3')->url( $imagesArray[$room->id -1] )}}" alt="Room images" width="100%"> --}}
                             <div class="ri-text">
                                 <h4>@lang('text.Room number'): {{ $room->id }}</h4>
                                 <h3>@lang('text.Price'): {{ $room->price }} @lang('text.Afs')</h3>

@@ -50,21 +50,8 @@ class FoodmenuController extends Controller
 
 
         if($request->hasFile('foodImage')){
-
-            // Get file name with extension
-            $fileWithExt = $request->file('foodImage')->getClientOriginalName();
-            
-            // Get just filename
-            $filename = pathinfo($fileWithExt, PATHINFO_FILENAME);
-
-            // Get file ext 
-            $extension = $request->file('foodImage')->getClientOriginalExtension();
-
-            // File name to store
-            $filenameToStore = $filename.'_'.time().'.'.$extension;
-
             // Store file
-            $path = $request->file('foodImage')->storeAs('public/food_images', $filenameToStore);
+            $filenameToStore = $request->file('foodImage')->store('public/food_images', 's3');
         }else{
             $filenameToStore = 'no_image.jpeg';
         }
@@ -121,25 +108,11 @@ class FoodmenuController extends Controller
 
 
         if($request->hasFile('foodImage')){
-
-            // Get file name with extension
-            $fileWithExt = $request->file('foodImage')->getClientOriginalName();
-            
-            // Get just filename
-            $filename = pathinfo($fileWithExt, PATHINFO_FILENAME);
-
-            // Get file ext 
-            $extension = $request->file('foodImage')->getClientOriginalExtension();
-
-            // File name to store
-            $filenameToStore = $filename.'_'.time().'.'.$extension;
-
             // Store file
-            $path = $request->file('foodImage')->storeAs('public/food_images', $filenameToStore);
+            $filenameToStore = $request->file('foodImage')->store('public/food_images', 's3');
         }else{
             $filenameToStore = 'no_image.jpeg';
         }
-
 
         $food = FoodMenu::find($id);
         $food->food_drink = $request->input('food_drink');

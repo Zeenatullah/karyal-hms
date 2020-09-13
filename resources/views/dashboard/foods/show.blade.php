@@ -108,7 +108,7 @@
 		</div>
 		<div class="col-lg-7">
 			<div style="width: 600px">
-				<img src="/storage/food_images/{{$foodMenu->foodImage}}" width="100%">
+				<img src="{{Storage::disk('s3')->url($foodMenu->foodImage)}}" width="100%">
 			</div>
 
 		</div>

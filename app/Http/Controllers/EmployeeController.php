@@ -48,21 +48,8 @@ class EmployeeController extends Controller
 
 
         if($request->hasFile('tazkira')){
-
-            // Get file name with extension
-            $fileWithExt = $request->file('tazkira')->getClientOriginalName();
-            
-            // Get just filename
-            $filename = pathinfo($fileWithExt, PATHINFO_FILENAME);
-
-            // Get file ext 
-            $extension = $request->file('tazkira')->getClientOriginalExtension();
-
-            // File name to store
-            $filenameToStore = $filename.'_'.time().'.'.$extension;
-
             // Store file
-            $path = $request->file('tazkira')->storeAs('public/employee_Tazkira', $filenameToStore);
+            $filenameToStore = $request->file('tazkira')->store('public/employee_Tazkira', 's3');
 
             // return "yes";
         }else{
@@ -130,21 +117,8 @@ class EmployeeController extends Controller
 
 
         if($request->hasFile('tazkira')){
-            // return 'success';
-            // Get file name with extension
-            $fileWithExt = $request->file('tazkira')->getClientOriginalName();
-            
-            // Get just filename
-            $filename = pathinfo($fileWithExt, PATHINFO_FILENAME);
-
-            // Get file ext 
-            $extension = $request->file('tazkira')->getClientOriginalExtension();
-
-            // File name to store
-            $filenameToStore = $filename.'_'.time().'.'.$extension;
-
             // Store file
-            $path = $request->file('tazkira')->storeAs('public/employee_Tazkira', $filenameToStore);
+            $filenameToStore = $request->file('tazkira')->store('public/employee_Tazkira', 's3');
 
             // return "yes";
         }else{

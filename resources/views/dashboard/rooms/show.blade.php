@@ -149,7 +149,7 @@
         <div class="col-sm-9 col-sm-offset-3 col-lg-7 col-lg-offset-0 main" >
             <div class="">
                 @foreach ($images as $image)
-                    <img src="/storage/room_images/{{$image->imageName}}" alt="Room images" width="100%">
+                    <img src="{{Storage::disk('s3')->url($image->imageName)}}" alt="Room images" width="100%">
                 @endforeach
             <div>
             <div>
